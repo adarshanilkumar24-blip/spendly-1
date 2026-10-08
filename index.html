@@ -1,0 +1,2838 @@
+:::writing{variant="document" id="74163" title="Spendly Mobile iOS + Android — Complete index.html"}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 user-scalable=no,
+                 viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#6366f1"
+    >
+
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes"
+    >
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
+
+    <meta
+        name="mobile-web-app-capable"
+        content="yes"
+    >
+
+    <title>Spendly</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            width: 100%;
+            min-height: 100%;
+            background: #f5f5fa;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            min-height: 100dvh;
+
+            margin: 0;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "SF Pro Display",
+                "SF Pro Text",
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: #f5f5fa;
+
+            color: #18181b;
+
+            overscroll-behavior-y: none;
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+
+        /* =====================================================
+           APP
+        ===================================================== */
+
+        .app {
+            width: 100%;
+            max-width: 560px;
+
+            min-height: 100vh;
+            min-height: 100dvh;
+
+            margin: 0 auto;
+
+            padding-top:
+                env(safe-area-inset-top);
+
+            padding-bottom:
+                calc(
+                    105px +
+                    env(safe-area-inset-bottom)
+                );
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .header {
+            padding:
+                18px
+                20px
+                14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 850;
+            letter-spacing: -1.3px;
+        }
+
+        .logo span {
+            color: #6366f1;
+        }
+
+        .header-button {
+            width: 46px;
+            height: 46px;
+
+            border: 0;
+            border-radius: 50%;
+
+            background: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0, 0, 0, .07);
+
+            transition:
+                transform .15s ease;
+        }
+
+        .header-button:active {
+            transform: scale(.9);
+        }
+
+
+        /* =====================================================
+           BALANCE
+        ===================================================== */
+
+        .balance-card {
+            position: relative;
+
+            overflow: hidden;
+
+            margin:
+                5px
+                18px
+                18px;
+
+            padding: 25px;
+
+            border-radius: 28px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1 0%,
+                    #7c3aed 55%,
+                    #8b5cf6 100%
+                );
+
+            box-shadow:
+                0 18px 40px
+                rgba(99, 102, 241, .27);
+        }
+
+        .balance-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            right: -80px;
+            top: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.08);
+        }
+
+        .balance-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            left: -45px;
+            bottom: -45px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.06);
+        }
+
+        .balance-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .balance-label {
+            font-size: 14px;
+            opacity: .78;
+        }
+
+        .balance {
+            margin-top: 7px;
+
+            font-size: clamp(
+                32px,
+                9vw,
+                42px
+            );
+
+            line-height: 1.05;
+
+            font-weight: 850;
+
+            letter-spacing: -1.5px;
+
+            overflow-wrap: anywhere;
+        }
+
+        .balance-subtitle {
+            margin-top: 9px;
+
+            font-size: 13px;
+
+            opacity: .72;
+        }
+
+
+        /* =====================================================
+           SUMMARY CARDS
+        ===================================================== */
+
+        .summary {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 12px;
+
+            padding:
+                0
+                18px;
+        }
+
+        .summary-card {
+            min-width: 0;
+
+            padding: 17px;
+
+            border-radius: 20px;
+
+            background: white;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, .045);
+        }
+
+        .summary-icon {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 13px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+
+            margin-bottom: 12px;
+        }
+
+        .income-icon {
+            color: #16a34a;
+            background: #dcfce7;
+        }
+
+        .expense-icon {
+            color: #dc2626;
+            background: #fee2e2;
+        }
+
+        .summary-title {
+            color: #71717a;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+        .summary-amount {
+            margin-top: 5px;
+
+            font-size: clamp(
+                16px,
+                4.7vw,
+                20px
+            );
+
+            font-weight: 800;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        /* =====================================================
+           TRANSACTIONS SECTION
+        ===================================================== */
+
+        .section {
+            padding:
+                25px
+                18px
+                0;
+        }
+
+        .section-header {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 13px;
+        }
+
+        .section-title {
+            font-size: 20px;
+
+            font-weight: 800;
+
+            letter-spacing: -.3px;
+        }
+
+        .transaction-count {
+            color: #71717a;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           TRANSACTION CARD
+        ===================================================== */
+
+        .transaction {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 9px;
+
+            padding: 13px;
+
+            border-radius: 18px;
+
+            background: white;
+
+            box-shadow:
+                0 3px 14px
+                rgba(0,0,0,.035);
+
+            transition:
+                transform .15s ease;
+        }
+
+        .transaction:active {
+            transform: scale(.985);
+        }
+
+        .transaction-icon {
+            width: 46px;
+            height: 46px;
+
+            flex: 0 0 46px;
+
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f4f4f5;
+
+            font-size: 20px;
+        }
+
+        .transaction-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .transaction-title {
+            font-size: 15px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+        .transaction-category {
+            margin-top: 4px;
+
+            color: #71717a;
+
+            font-size: 11px;
+
+            font-weight: 500;
+        }
+
+        .transaction-right {
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+        }
+
+        .transaction-amount {
+            font-size: 14px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+        .income {
+            color: #16a34a;
+        }
+
+        .expense {
+            color: #dc2626;
+        }
+
+        .delete-button {
+            width: 38px;
+            height: 38px;
+
+            flex: 0 0 38px;
+
+            border: 0;
+
+            border-radius: 12px;
+
+            background: transparent;
+
+            color: #a1a1aa;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 16px;
+        }
+
+        .delete-button:active {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty {
+            padding: 50px 20px;
+
+            text-align: center;
+
+            color: #71717a;
+        }
+
+        .empty-icon {
+            font-size: 48px;
+
+            margin-bottom: 12px;
+        }
+
+        .empty-title {
+            color: #27272a;
+
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+        .empty-subtitle {
+            margin-top: 6px;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           FLOATING ACTION BUTTON
+        ===================================================== */
+
+        .fab {
+            position: fixed;
+
+            right: 20px;
+
+            bottom:
+                calc(
+                    22px +
+                    env(safe-area-inset-bottom)
+                );
+
+            width: 62px;
+            height: 62px;
+
+            border: 0;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-size: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow:
+                0 12px 30px
+                rgba(99,102,241,.38);
+
+            z-index: 50;
+
+            transition:
+                transform .15s ease;
+        }
+
+        .fab:active {
+            transform:
+                scale(.88);
+        }
+
+
+        /* =====================================================
+           MODAL / BOTTOM SHEET
+        ===================================================== */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: flex-end;
+
+            background:
+                rgba(0,0,0,.45);
+
+            z-index: 100;
+
+            padding-top:
+                env(safe-area-inset-top);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            width: 100%;
+
+            max-width: 560px;
+
+            max-height:
+                calc(
+                    100dvh -
+                    env(safe-area-inset-top)
+                );
+
+            overflow-y: auto;
+
+            margin:
+                0 auto;
+
+            padding:
+                14px
+                20px
+                calc(
+                    24px +
+                    env(safe-area-inset-bottom)
+                );
+
+            border-radius:
+                28px
+                28px
+                0
+                0;
+
+            background: white;
+
+            animation:
+                sheetUp
+                .25s
+                cubic-bezier(
+                    .2,
+                    .8,
+                    .2,
+                    1
+                );
+        }
+
+        @keyframes sheetUp {
+
+            from {
+                transform:
+                    translateY(100%);
+            }
+
+            to {
+                transform:
+                    translateY(0);
+            }
+        }
+
+        .sheet-handle {
+            width: 42px;
+            height: 5px;
+
+            margin:
+                0 auto
+                17px;
+
+            border-radius: 10px;
+
+            background: #d4d4d8;
+        }
+
+        .modal-title {
+            font-size: 23px;
+
+            font-weight: 850;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =====================================================
+           TYPE SELECTOR
+        ===================================================== */
+
+        .type-selector {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 4px;
+
+            padding: 4px;
+
+            border-radius: 14px;
+
+            background: #f4f4f5;
+
+            margin-bottom: 17px;
+        }
+
+        .type-button {
+            min-height: 46px;
+
+            border: 0;
+
+            border-radius: 11px;
+
+            background: transparent;
+
+            color: #71717a;
+
+            font-size: 14px;
+
+            font-weight: 750;
+        }
+
+        .type-button.active-expense {
+            background: white;
+
+            color: #dc2626;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0,0,0,.08);
+        }
+
+        .type-button.active-income {
+            background: white;
+
+            color: #16a34a;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0,0,0,.08);
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #3f3f46;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            min-height: 50px;
+
+            padding:
+                12px
+                14px;
+
+            border:
+                1px solid #e4e4e7;
+
+            border-radius: 14px;
+
+            outline: none;
+
+            background: white;
+
+            color: #18181b;
+
+            font-size: 16px;
+
+            appearance: auto;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #6366f1;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(99,102,241,.10);
+        }
+
+        .save-button {
+            width: 100%;
+
+            min-height: 52px;
+
+            margin-top: 7px;
+
+            border: 0;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #6366f1,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 8px 20px
+                rgba(99,102,241,.23);
+        }
+
+        .save-button:active {
+            transform: scale(.98);
+        }
+
+        .cancel-button {
+            width: 100%;
+
+            min-height: 46px;
+
+            border: 0;
+
+            background: transparent;
+
+            color: #71717a;
+
+            font-size: 15px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           ANIMATION LAYER
+        ===================================================== */
+
+        #celebration {
+            position: fixed;
+
+            inset: 0;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 999;
+        }
+
+
+        /* =====================================================
+           REWARD MESSAGE
+        ===================================================== */
+
+        .reward-message {
+            position: fixed;
+
+            left: 50%;
+            top: 38%;
+
+            transform:
+                translate(-50%, -50%)
+                scale(.4);
+
+            opacity: 0;
+
+            padding:
+                14px
+                22px;
+
+            border-radius: 999px;
+
+            color: white;
+
+            font-size: 19px;
+
+            font-weight: 850;
+
+            white-space: nowrap;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,.20);
+
+            animation:
+                rewardMessage
+                1.4s
+                ease-out
+                forwards;
+        }
+
+        .reward-message.income {
+            background:
+                linear-gradient(
+                    135deg,
+                    #16a34a,
+                    #22c55e
+                );
+        }
+
+        .reward-message.expense {
+            background:
+                linear-gradient(
+                    135deg,
+                    #dc2626,
+                    #ef4444
+                );
+        }
+
+        @keyframes rewardMessage {
+
+            0% {
+                opacity: 0;
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(.4);
+            }
+
+            20% {
+                opacity: 1;
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(1.12);
+            }
+
+            35% {
+                transform:
+                    translate(-50%, -50%)
+                    scale(1);
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    translate(-50%, -80%)
+                    scale(.9);
+            }
+        }
+
+
+        /* =====================================================
+           INCOME COINS
+        ===================================================== */
+
+        .coin {
+            position: absolute;
+
+            left: 50%;
+            top: 42%;
+
+            font-size: 27px;
+
+            animation:
+                coinBurst
+                1.2s
+                cubic-bezier(.15,.8,.3,1)
+                forwards;
+        }
+
+        @keyframes coinBurst {
+
+            0% {
+                opacity: 0;
+
+                transform:
+                    translate(-50%,-50%)
+                    scale(.2)
+                    rotate(0deg);
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    translate(
+                        calc(-50% + var(--x)),
+                        calc(-50% + var(--y))
+                    )
+                    scale(1)
+                    rotate(var(--rotation));
+            }
+        }
+
+
+        /* =====================================================
+           GREEN GLOW
+        ===================================================== */
+
+        .reward-glow {
+            position: fixed;
+
+            left: 50%;
+            top: 42%;
+
+            width: 30px;
+            height: 30px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            transform:
+                translate(-50%,-50%);
+
+            animation:
+                glowBurst
+                .8s
+                ease-out
+                forwards;
+        }
+
+        @keyframes glowBurst {
+
+            0% {
+                opacity: .8;
+
+                transform:
+                    translate(-50%,-50%)
+                    scale(.2);
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    translate(-50%,-50%)
+                    scale(15);
+            }
+        }
+
+
+        /* =====================================================
+           EXPENSE FLASH
+        ===================================================== */
+
+        .loss-flash {
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(239,68,68,.16);
+
+            animation:
+                lossFlash
+                .55s
+                ease-out
+                forwards;
+        }
+
+        @keyframes lossFlash {
+
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           EXPENSE SHAKE
+        ===================================================== */
+
+        .shake {
+            animation:
+                shakeScreen
+                .45s
+                ease;
+        }
+
+        @keyframes shakeScreen {
+
+            0%,
+            100% {
+                transform:
+                    translateX(0);
+            }
+
+            20% {
+                transform:
+                    translateX(-7px);
+            }
+
+            40% {
+                transform:
+                    translateX(7px);
+            }
+
+            60% {
+                transform:
+                    translateX(-5px);
+            }
+
+            80% {
+                transform:
+                    translateX(5px);
+            }
+        }
+
+        @keyframes lossCoin {
+
+            0% {
+                opacity: 0;
+
+                transform:
+                    translate(-50%,-50%)
+                    scale(1.2);
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    translate(
+                        calc(-50% + var(--x)),
+                        calc(-50% + 250px)
+                    )
+                    rotate(360deg);
+            }
+        }
+
+        .loss-coin {
+            position: absolute;
+
+            left: 50%;
+            top: 35%;
+
+            font-size: 26px;
+
+            animation:
+                lossCoin
+                1.1s
+                ease-in
+                forwards;
+        }
+
+
+        /* =====================================================
+           DARK MODE
+        ===================================================== */
+
+        @media (prefers-color-scheme: dark) {
+
+            html,
+            body {
+                background: #09090b;
+                color: #fafafa;
+            }
+
+            .header-button,
+            .summary-card,
+            .transaction,
+            .modal-content {
+                background: #18181b;
+            }
+
+            .summary-title,
+            .transaction-category,
+            .transaction-count {
+                color: #a1a1aa;
+            }
+
+            .empty-title {
+                color: #fafafa;
+            }
+
+            .transaction-icon {
+                background: #27272a;
+            }
+
+            input,
+            select {
+                background: #18181b;
+                color: #fafafa;
+                border-color: #3f3f46;
+            }
+
+            .form-label {
+                color: #d4d4d8;
+            }
+
+            .type-selector {
+                background: #27272a;
+            }
+
+            .type-button.active-expense,
+            .type-button.active-income {
+                background: #18181b;
+            }
+
+            .cancel-button {
+                color: #a1a1aa;
+            }
+
+        }
+
+
+        /* =====================================================
+           TABLET / LARGE SCREEN
+        ===================================================== */
+
+        @media (min-width: 700px) {
+
+            body {
+                padding:
+                    20px 0;
+            }
+
+            .app {
+                border-radius: 28px;
+
+                min-height:
+                    calc(100vh - 40px);
+
+                background: #f5f5fa;
+
+                box-shadow:
+                    0 10px 50px
+                    rgba(0,0,0,.08);
+            }
+
+            .fab {
+                position: absolute;
+
+                right:
+                    calc(
+                        50% -
+                        280px
+                    );
+            }
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
+
+        @media (
+            prefers-reduced-motion: reduce
+        ) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .01ms !important;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         ANIMATION LAYER
+    ====================================================== -->
+
+    <div id="celebration"></div>
+
+
+    <!-- =====================================================
+         APP
+    ====================================================== -->
+
+    <main class="app">
+
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div class="logo">
+                Spend<span>ly</span>
+            </div>
+
+            <button
+                class="header-button"
+                id="clearButton"
+                aria-label="Clear all transactions"
+            >
+                ⚙️
+            </button>
+
+        </header>
+
+
+        <!-- BALANCE -->
+
+        <section class="balance-card">
+
+            <div class="balance-content">
+
+                <div class="balance-label">
+                    Current Balance
+                </div>
+
+                <div
+                    class="balance"
+                    id="balance"
+                >
+                    ₹0
+                </div>
+
+                <div class="balance-subtitle">
+                    Your finances at a glance
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="summary">
+
+
+            <div class="summary-card">
+
+                <div
+                    class="
+                        summary-icon
+                        income-icon
+                    "
+                >
+                    ↓
+                </div>
+
+                <div class="summary-title">
+                    Income
+                </div>
+
+                <div
+                    class="
+                        summary-amount
+                        income
+                    "
+                    id="income"
+                >
+                    ₹0
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div
+                    class="
+                        summary-icon
+                        expense-icon
+                    "
+                >
+                    ↑
+                </div>
+
+                <div class="summary-title">
+                    Expenses
+                </div>
+
+                <div
+                    class="
+                        summary-amount
+                        expense
+                    "
+                    id="expenses"
+                >
+                    ₹0
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- TRANSACTIONS -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <div class="section-title">
+                    Recent Transactions
+                </div>
+
+                <div
+                    class="transaction-count"
+                    id="transactionCount"
+                ></div>
+
+            </div>
+
+            <div id="transactions"></div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         ADD BUTTON
+    ====================================================== -->
+
+    <button
+        class="fab"
+        id="addButton"
+        aria-label="Add transaction"
+    >
+        +
+    </button>
+
+
+    <!-- =====================================================
+         ADD TRANSACTION SHEET
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-content">
+
+            <div class="sheet-handle"></div>
+
+            <div class="modal-title">
+                Add Transaction
+            </div>
+
+
+            <!-- TYPE -->
+
+            <div class="type-selector">
+
+                <button
+                    class="
+                        type-button
+                        active-expense
+                    "
+                    id="expenseButton"
+                >
+                    Expense
+                </button>
+
+                <button
+                    class="type-button"
+                    id="incomeButton"
+                >
+                    Income
+                </button>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label
+                    class="form-label"
+                    for="title"
+                >
+                    Description
+                </label>
+
+                <input
+                    id="title"
+                    type="text"
+                    maxlength="60"
+                    autocomplete="off"
+                    placeholder="e.g. Lunch"
+                >
+
+            </div>
+
+
+            <!-- AMOUNT -->
+
+            <div class="form-group">
+
+                <label
+                    class="form-label"
+                    for="amount"
+                >
+                    Amount
+                </label>
+
+                <input
+                    id="amount"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    placeholder="₹0"
+                >
+
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="form-group">
+
+                <label
+                    class="form-label"
+                    for="category"
+                >
+                    Category
+                </label>
+
+                <select id="category">
+
+                    <option value="Food">
+                        🍔 Food
+                    </option>
+
+                    <option value="Transport">
+                        🚗 Transport
+                    </option>
+
+                    <option value="Shopping">
+                        🛍️ Shopping
+                    </option>
+
+                    <option value="Bills">
+                        📄 Bills
+                    </option>
+
+                    <option value="Entertainment">
+                        🎬 Entertainment
+                    </option>
+
+                    <option value="Health">
+                        ❤️ Health
+                    </option>
+
+                    <option value="Other">
+                        💰 Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SAVE -->
+
+            <button
+                class="save-button"
+                id="saveButton"
+            >
+                Save Transaction
+            </button>
+
+
+            <!-- CANCEL -->
+
+            <button
+                class="cancel-button"
+                id="cancelButton"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        /* =====================================================
+           STORAGE
+        ===================================================== */
+
+        const STORAGE_KEY =
+            "spendly_transactions";
+
+
+        let transactions = [];
+
+
+        try {
+
+            transactions =
+                JSON.parse(
+                    localStorage.getItem(
+                        STORAGE_KEY
+                    )
+                ) || [];
+
+        } catch {
+
+            transactions = [];
+
+        }
+
+
+        let currentType =
+            "expense";
+
+
+        /* =====================================================
+           DOM
+        ===================================================== */
+
+        const modal =
+            document.getElementById(
+                "modal"
+            );
+
+        const titleInput =
+            document.getElementById(
+                "title"
+            );
+
+        const amountInput =
+            document.getElementById(
+                "amount"
+            );
+
+        const categoryInput =
+            document.getElementById(
+                "category"
+            );
+
+        const expenseButton =
+            document.getElementById(
+                "expenseButton"
+            );
+
+        const incomeButton =
+            document.getElementById(
+                "incomeButton"
+            );
+
+
+        /* =====================================================
+           MONEY
+        ===================================================== */
+
+        function formatMoney(amount) {
+
+            return new Intl.NumberFormat(
+                "en-IN",
+                {
+                    style: "currency",
+                    currency: "INR",
+                    maximumFractionDigits: 0
+                }
+            ).format(amount);
+
+        }
+
+
+        /* =====================================================
+           HAPTICS
+        ===================================================== */
+
+        function vibrate(pattern) {
+
+            try {
+
+                if (
+                    "vibrate"
+                    in navigator
+                ) {
+
+                    navigator.vibrate(
+                        pattern
+                    );
+
+                }
+
+            } catch {
+
+                // Haptics are optional.
+            }
+
+        }
+
+
+        /* =====================================================
+           TYPE
+        ===================================================== */
+
+        function setType(type) {
+
+            currentType = type;
+
+
+            expenseButton.className =
+                "type-button" +
+                (
+                    type === "expense"
+                        ? " active-expense"
+                        : ""
+                );
+
+
+            incomeButton.className =
+                "type-button" +
+                (
+                    type === "income"
+                        ? " active-income"
+                        : ""
+                );
+
+        }
+
+
+        /* =====================================================
+           OPEN SHEET
+        ===================================================== */
+
+        function openModal() {
+
+            modal.classList.add(
+                "active"
+            );
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            setTimeout(() => {
+
+                titleInput.focus();
+
+            }, 180);
+
+
+            vibrate(15);
+
+        }
+
+
+        /* =====================================================
+           CLOSE SHEET
+        ===================================================== */
+
+        function closeModal() {
+
+            modal.classList.remove(
+                "active"
+            );
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            titleInput.value =
+                "";
+
+            amountInput.value =
+                "";
+
+            categoryInput.value =
+                "Food";
+
+
+            setType(
+                "expense"
+            );
+
+        }
+
+
+        /* =====================================================
+           SAVE
+        ===================================================== */
+
+        function saveTransaction() {
+
+            const title =
+                titleInput
+                    .value
+                    .trim();
+
+
+            const amount =
+                Number(
+                    amountInput.value
+                );
+
+
+            const category =
+                categoryInput.value;
+
+
+            if (!title) {
+
+                alert(
+                    "Please enter a description."
+                );
+
+                titleInput.focus();
+
+                return;
+
+            }
+
+
+            if (
+                !Number.isFinite(amount)
+                ||
+                amount <= 0
+            ) {
+
+                alert(
+                    "Please enter a valid amount."
+                );
+
+                amountInput.focus();
+
+                return;
+
+            }
+
+
+            const savedType =
+                currentType;
+
+
+            const transaction = {
+
+                id:
+                    Date.now()
+                    +
+                    Math.random(),
+
+                title,
+
+                amount,
+
+                type:
+                    savedType,
+
+                category,
+
+                date:
+                    new Date()
+                        .toISOString()
+
+            };
+
+
+            transactions.unshift(
+                transaction
+            );
+
+
+            saveData();
+
+            render();
+
+            closeModal();
+
+
+            /* Animation */
+
+            if (
+                savedType ===
+                "income"
+            ) {
+
+                showIncomeReward(
+                    amount
+                );
+
+            } else {
+
+                showExpenseLoss(
+                    amount
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SAVE DATA
+        ===================================================== */
+
+        function saveData() {
+
+            try {
+
+                localStorage.setItem(
+                    STORAGE_KEY,
+                    JSON.stringify(
+                        transactions
+                    )
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Storage error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           DELETE
+        ===================================================== */
+
+        function deleteTransaction(
+            id
+        ) {
+
+            transactions =
+                transactions.filter(
+                    item =>
+                        item.id !== id
+                );
+
+
+            saveData();
+
+            render();
+
+            vibrate(20);
+
+        }
+
+
+        /* =====================================================
+           CLEAR ALL
+        ===================================================== */
+
+        function clearAll() {
+
+            if (
+                transactions.length === 0
+            ) {
+
+                alert(
+                    "There are no transactions to clear."
+                );
+
+                return;
+
+            }
+
+
+            const confirmed =
+                confirm(
+                    "Delete all transactions?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            transactions = [];
+
+
+            saveData();
+
+            render();
+
+            vibrate(
+                [30, 40, 30]
+            );
+
+        }
+
+
+        /* =====================================================
+           CATEGORY ICON
+        ===================================================== */
+
+        function getIcon(
+            category
+        ) {
+
+            const icons = {
+
+                Food: "🍔",
+
+                Transport: "🚗",
+
+                Shopping: "🛍️",
+
+                Bills: "📄",
+
+                Entertainment: "🎬",
+
+                Health: "❤️",
+
+                Other: "💰"
+
+            };
+
+
+            return (
+                icons[category]
+                ||
+                "💰"
+            );
+
+        }
+
+
+        /* =====================================================
+           HTML SAFETY
+        ===================================================== */
+
+        function escapeHTML(
+            text
+        ) {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.textContent =
+                text;
+
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =====================================================
+           RENDER
+        ===================================================== */
+
+        function render() {
+
+            let income = 0;
+
+            let expenses = 0;
+
+
+            transactions.forEach(
+                transaction => {
+
+                    if (
+                        transaction.type
+                        === "income"
+                    ) {
+
+                        income +=
+                            Number(
+                                transaction.amount
+                            );
+
+                    } else {
+
+                        expenses +=
+                            Number(
+                                transaction.amount
+                            );
+
+                    }
+
+                }
+            );
+
+
+            const balance =
+                income - expenses;
+
+
+            document
+                .getElementById(
+                    "balance"
+                )
+                .textContent =
+                    formatMoney(
+                        balance
+                    );
+
+
+            document
+                .getElementById(
+                    "income"
+                )
+                .textContent =
+                    formatMoney(
+                        income
+                    );
+
+
+            document
+                .getElementById(
+                    "expenses"
+                )
+                .textContent =
+                    formatMoney(
+                        expenses
+                    );
+
+
+            document
+                .getElementById(
+                    "transactionCount"
+                )
+                .textContent =
+                    transactions.length
+                        ? `${transactions.length}`
+                        : "";
+
+
+            const container =
+                document
+                    .getElementById(
+                        "transactions"
+                    );
+
+
+            if (
+                transactions.length
+                === 0
+            ) {
+
+                container.innerHTML = `
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            💳
+                        </div>
+
+                        <div class="empty-title">
+                            No transactions yet
+                        </div>
+
+                        <div class="empty-subtitle">
+                            Tap + to add your
+                            first transaction.
+                        </div>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                transactions
+                    .map(
+                        transaction => {
+
+                            const isIncome =
+                                transaction.type
+                                === "income";
+
+
+                            const sign =
+                                isIncome
+                                    ? "+"
+                                    : "-";
+
+
+                            const color =
+                                isIncome
+                                    ? "income"
+                                    : "expense";
+
+
+                            return `
+
+                                <div
+                                    class="transaction"
+                                >
+
+                                    <div
+                                        class="
+                                            transaction-icon
+                                        "
+                                    >
+                                        ${getIcon(
+                                            transaction.category
+                                        )}
+                                    </div>
+
+
+                                    <div
+                                        class="
+                                            transaction-info
+                                        "
+                                    >
+
+                                        <div
+                                            class="
+                                                transaction-title
+                                            "
+                                        >
+                                            ${escapeHTML(
+                                                transaction.title
+                                            )}
+                                        </div>
+
+
+                                        <div
+                                            class="
+                                                transaction-category
+                                            "
+                                        >
+                                            ${escapeHTML(
+                                                transaction.category
+                                            )}
+                                        </div>
+
+                                    </div>
+
+
+                                    <div
+                                        class="
+                                            transaction-right
+                                        "
+                                    >
+
+                                        <div
+                                            class="
+                                                transaction-amount
+                                                ${color}
+                                            "
+                                        >
+                                            ${sign}${formatMoney(
+                                                Number(
+                                                    transaction.amount
+                                                )
+                                            )}
+                                        </div>
+
+
+                                        <button
+                                            class="
+                                                delete-button
+                                            "
+                                            data-delete-id="
+                                                ${transaction.id}
+                                            "
+                                            aria-label="
+                                                Delete transaction
+                                            "
+                                        >
+                                            🗑️
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+
+            /* Delete buttons */
+
+            container
+                .querySelectorAll(
+                    "[data-delete-id]"
+                )
+                .forEach(
+                    button => {
+
+                        button.addEventListener(
+                            "click",
+                            () => {
+
+                                deleteTransaction(
+                                    Number(
+                                        button
+                                            .dataset
+                                            .deleteId
+                                    )
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           💰 INCOME REWARD
+        ===================================================== */
+
+        function showIncomeReward(
+            amount
+        ) {
+
+            const container =
+                document.getElementById(
+                    "celebration"
+                );
+
+
+            container.innerHTML =
+                "";
+
+
+            /* Green glow */
+
+            const glow =
+                document.createElement(
+                    "div"
+                );
+
+
+            glow.className =
+                "reward-glow";
+
+
+            container.appendChild(
+                glow
+            );
+
+
+            /* Message */
+
+            const message =
+                document.createElement(
+                    "div"
+                );
+
+
+            message.className =
+                "reward-message income";
+
+
+            message.textContent =
+                `💰 +${formatMoney(
+                    amount
+                )} Added!`;
+
+
+            container.appendChild(
+                message
+            );
+
+
+            /* Coins */
+
+            const coins = [
+
+                "🪙",
+                "💰",
+                "🪙",
+                "💵",
+                "🪙",
+                "✨",
+                "💰",
+                "🪙"
+
+            ];
+
+
+            coins.forEach(
+                (coin, index) => {
+
+                    const element =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    element.className =
+                        "coin";
+
+
+                    element.textContent =
+                        coin;
+
+
+                    const angle =
+                        (
+                            Math.PI * 2
+                            / coins.length
+                        )
+                        * index;
+
+
+                    const distance =
+                        90
+                        +
+                        Math.random()
+                        * 110;
+
+
+                    element.style.setProperty(
+                        "--x",
+                        `${
+                            Math.cos(angle)
+                            * distance
+                        }px`
+                    );
+
+
+                    element.style.setProperty(
+                        "--y",
+                        `${
+                            Math.sin(angle)
+                            * distance
+                        }px`
+                    );
+
+
+                    element.style.setProperty(
+                        "--rotation",
+                        `${
+                            Math.random()
+                            * 720
+                            - 360
+                        }deg`
+                    );
+
+
+                    container.appendChild(
+                        element
+                    );
+
+                }
+            );
+
+
+            vibrate(
+                [
+                    25,
+                    35,
+                    50
+                ]
+            );
+
+
+            setTimeout(
+                () => {
+
+                    container.innerHTML =
+                        "";
+
+                },
+                1600
+            );
+
+        }
+
+
+        /* =====================================================
+           💸 EXPENSE LOSS
+        ===================================================== */
+
+        function showExpenseLoss(
+            amount
+        ) {
+
+            const container =
+                document.getElementById(
+                    "celebration"
+                );
+
+
+            container.innerHTML =
+                "";
+
+
+            /* Red flash */
+
+            const flash =
+                document.createElement(
+                    "div"
+                );
+
+
+            flash.className =
+                "loss-flash";
+
+
+            container.appendChild(
+                flash
+            );
+
+
+            /* Message */
+
+            const message =
+                document.createElement(
+                    "div"
+                );
+
+
+            message.className =
+                "reward-message expense";
+
+
+            message.textContent =
+                `💸 -${formatMoney(
+                    amount
+                )}`;
+
+
+            container.appendChild(
+                message
+            );
+
+
+            /* Falling money */
+
+            const coins = [
+
+                "💸",
+                "🪙",
+                "💸",
+                "🪙",
+                "💸"
+
+            ];
+
+
+            coins.forEach(
+                (coin, index) => {
+
+                    const element =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    element.className =
+                        "loss-coin";
+
+
+                    element.textContent =
+                        coin;
+
+
+                    element.style.setProperty(
+                        "--x",
+                        `${
+                            (index - 2)
+                            * 70
+                        }px`
+                    );
+
+
+                    container.appendChild(
+                        element
+                    );
+
+                }
+            );
+
+
+            /* Shake */
+
+            const app =
+                document.querySelector(
+                    ".app"
+                );
+
+
+            app.classList.add(
+                "shake"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    app.classList.remove(
+                        "shake"
+                    );
+
+                },
+                500
+            );
+
+
+            vibrate(
+                [
+                    35,
+                    25,
+                    35
+                ]
+            );
+
+
+            setTimeout(
+                () => {
+
+                    container.innerHTML =
+                        "";
+
+                },
+                1500
+            );
+
+        }
+
+
+        /* =====================================================
+           BUTTON EVENTS
+        ===================================================== */
+
+        document
+            .getElementById(
+                "addButton"
+            )
+            .addEventListener(
+                "click",
+                openModal
+            );
+
+
+        document
+            .getElementById(
+                "cancelButton"
+            )
+            .addEventListener(
+                "click",
+                closeModal
+            );
+
+
+        document
+            .getElementById(
+                "saveButton"
+            )
+            .addEventListener(
+                "click",
+                saveTransaction
+            );
+
+
+        document
+            .getElementById(
+                "clearButton"
+            )
+            .addEventListener(
+                "click",
+                clearAll
+            );
+
+
+        expenseButton
+            .addEventListener(
+                "click",
+                () =>
+                    setType(
+                        "expense"
+                    )
+            );
+
+
+        incomeButton
+            .addEventListener(
+                "click",
+                () =>
+                    setType(
+                        "income"
+                    )
+            );
+
+
+        /* =====================================================
+           CLOSE MODAL BY BACKDROP
+        ===================================================== */
+
+        modal.addEventListener(
+            "click",
+            event => {
+
+                if (
+                    event.target
+                    === modal
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           ESC KEY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key
+                    === "Escape"
+                ) {
+
+                    closeModal();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           ENTER KEY
+        ===================================================== */
+
+        [titleInput, amountInput]
+            .forEach(
+                input => {
+
+                    input.addEventListener(
+                        "keydown",
+                        event => {
+
+                            if (
+                                event.key
+                                === "Enter"
+                            ) {
+
+                                saveTransaction();
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+
+        /* =====================================================
+           INITIALIZE
+        ===================================================== */
+
+        render();
+
+    </script>
+
+</body>
+
+</html>
