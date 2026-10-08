@@ -1,65 +1,71 @@
-:::writing{variant="document" id="74163" title="Spendly — iOS + Android Touch-Optimized index.html"} <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8">
+:::writing{variant="document" id="74163" title="Spendly — Final iOS + Android Touch Version"} <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
 
-<meta name="theme-color" content="#6366f1"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <meta name="apple-mobile-web-app-title" content="Spendly"> <meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#6366f1">
+
+<meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <meta name="apple-mobile-web-app-title" content="Spendly">
+
+<meta name="mobile-web-app-capable" content="yes">
 
 <title>Spendly</title>
 
-<style> /* ========================================================= RESET / IOS ========================================================= */
+<style>
+
+/* ========================================================= RESET ========================================================= */
 
 {
 box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-html { width: 100%; min-height: 100%; background: #f5f5fa; overscroll-behavior: none; }
+html { width: 100%; min-height: 100%; background: #f5f5fa; }
 
 body { margin: 0; width: 100%; min-height: 100vh; min-height: 100dvh;
 
-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Arial, sans-serif;
 
 background: #f5f5fa; color: #18181b;
 
--webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;
+-webkit-font-smoothing: antialiased;
 
-overscroll-behavior-y: none; }
+overscroll-behavior: none; }
 
 button, input, select { font: inherit; }
 
-button { -webkit-appearance: none; appearance: none; border: 0; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+button { -webkit-appearance: none; appearance: none;
 
-input, select { -webkit-appearance: none; appearance: none; }
+touch-action: manipulation;
 
-button:focus, input:focus, select:focus { outline: none; }
+-webkit-user-select: none; user-select: none;
+
+-webkit-touch-callout: none; }
 
 /* ========================================================= APP ========================================================= */
 
-.app { width: 100%; max-width: 560px; min-height: 100vh; min-height: 100dvh;
+.app { width: 100%; max-width: 560px;
+
+min-height: 100vh; min-height: 100dvh;
 
 margin: 0 auto;
 
-padding-top: calc(8px + env(safe-area-inset-top));
+padding-top: env(safe-area-inset-top);
 
-padding-bottom: calc(110px + env(safe-area-inset-bottom));
-
-transition: transform .35s ease; }
+padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
 
 /* ========================================================= HEADER ========================================================= */
 
-.header { min-height: 70px;
+.header { display: flex; align-items: center; justify-content: space-between;
 
-padding: 10px 18px;
+padding: 18px 20px 14px; }
 
-display: flex; align-items: center; justify-content: space-between; }
-
-.logo { font-size: 28px; font-weight: 850; letter-spacing: -1.3px; }
+.logo { font-size: 28px; font-weight: 850; letter-spacing: -1.4px; }
 
 .logo span { color: #6366f1; }
 
-.header-button { width: 48px; height: 48px;
+.header-button { width: 46px; height: 46px;
 
-border-radius: 50%;
+border: 0; border-radius: 50%;
 
-background: #fff;
+background: white;
 
 display: flex; align-items: center; justify-content: center;
 
@@ -77,13 +83,13 @@ touch-action: manipulation; }
 
 margin: 5px 18px 18px;
 
-padding: 25px;
+padding: 26px;
 
 border-radius: 28px;
 
-color: #fff;
+color: white;
 
-background: linear-gradient( 135deg, #6366f1 0%, #7c3aed 55%, #8b5cf6 100% );
+background: linear-gradient( 135deg, #6366f1, #7c3aed 55%, #8b5cf6 );
 
 box-shadow: 0 18px 40px rgba(99,102,241,.27); }
 
@@ -117,15 +123,21 @@ background: rgba(255,255,255,.06); }
 
 .balance { margin-top: 7px;
 
-font-size: clamp(32px, 9vw, 42px); line-height: 1.05;
+font-size: clamp(32px, 9vw, 42px);
 
-font-weight: 850; letter-spacing: -1.5px;
+line-height: 1.05;
+
+font-weight: 850;
+
+letter-spacing: -1.5px;
 
 overflow-wrap: anywhere; }
 
 .balance-subtitle { margin-top: 9px;
 
-font-size: 13px; opacity: .72; }
+font-size: 13px;
+
+opacity: .72; }
 
 /* ========================================================= SUMMARY ========================================================= */
 
@@ -143,11 +155,11 @@ padding: 17px;
 
 border-radius: 20px;
 
-background: #fff;
+background: white;
 
 box-shadow: 0 5px 20px rgba(0,0,0,.045); }
 
-.summary-icon { width: 40px; height: 40px;
+.summary-icon { width: 38px; height: 38px;
 
 border-radius: 13px;
 
@@ -163,11 +175,15 @@ margin-bottom: 12px; }
 
 .summary-title { color: #71717a;
 
-font-size: 12px; font-weight: 600; }
+font-size: 12px;
+
+font-weight: 600; }
 
 .summary-amount { margin-top: 5px;
 
-font-size: clamp(16px, 4.7vw, 20px); font-weight: 800;
+font-size: clamp(16px,4.7vw,20px);
+
+font-weight: 800;
 
 overflow-wrap: anywhere; }
 
@@ -179,21 +195,29 @@ overflow-wrap: anywhere; }
 
 .section { padding: 25px 18px 0; }
 
-.section-header { display: flex; align-items: center; justify-content: space-between;
+.section-header { display: flex;
+
+align-items: center; justify-content: space-between;
 
 margin-bottom: 13px; }
 
-.section-title { font-size: 20px; font-weight: 800; letter-spacing: -.3px; }
+.section-title { font-size: 20px;
+
+font-weight: 800;
+
+letter-spacing: -.3px; }
 
 .transaction-count { color: #71717a;
 
-font-size: 12px; font-weight: 600; }
+font-size: 12px;
+
+font-weight: 600; }
 
 .transaction { width: 100%;
 
-min-height: 72px;
+display: flex;
 
-display: flex; align-items: center;
+align-items: center;
 
 gap: 12px;
 
@@ -203,13 +227,9 @@ padding: 13px;
 
 border-radius: 18px;
 
-background: #fff;
+background: white;
 
-box-shadow: 0 3px 14px rgba(0,0,0,.035);
-
-touch-action: manipulation;
-
-transition: transform .12s ease; }
+box-shadow: 0 3px 14px rgba(0,0,0,.035); }
 
 .transaction:active { transform: scale(.985); }
 
@@ -227,25 +247,41 @@ font-size: 20px; }
 
 .transaction-info { flex: 1; min-width: 0; }
 
-.transaction-title { font-size: 15px; font-weight: 700;
+.transaction-title { font-size: 15px;
 
-white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+font-weight: 700;
+
+white-space: nowrap;
+
+overflow: hidden;
+
+text-overflow: ellipsis; }
 
 .transaction-category { margin-top: 4px;
 
 color: #71717a;
 
-font-size: 11px; font-weight: 500; }
+font-size: 11px;
 
-.transaction-right { display: flex; align-items: center; gap: 4px;
+font-weight: 500; }
 
-flex-shrink: 0; }
+.transaction-right { display: flex;
 
-.transaction-amount { font-size: 14px; font-weight: 800; white-space: nowrap; }
+align-items: center;
 
-.delete-button { width: 44px; height: 44px;
+gap: 4px; }
 
-flex: 0 0 44px;
+.transaction-amount { font-size: 14px;
+
+font-weight: 800;
+
+white-space: nowrap; }
+
+.delete-button { width: 40px; height: 40px;
+
+flex: 0 0 40px;
+
+border: 0;
 
 border-radius: 12px;
 
@@ -255,13 +291,11 @@ color: #a1a1aa;
 
 display: flex; align-items: center; justify-content: center;
 
-font-size: 17px;
+font-size: 16px;
 
 touch-action: manipulation; }
 
-.delete-button:active { background: #fee2e2; color: #dc2626;
-
-transform: scale(.90); }
+.delete-button:active { background: #fee2e2; color: #dc2626; }
 
 /* ========================================================= EMPTY ========================================================= */
 
@@ -271,15 +305,21 @@ text-align: center;
 
 color: #71717a; }
 
-.empty-icon { font-size: 48px; margin-bottom: 12px; }
+.empty-icon { font-size: 48px;
+
+margin-bottom: 12px; }
 
 .empty-title { color: #27272a;
 
-font-size: 16px; font-weight: 700; }
+font-size: 16px;
 
-.empty-subtitle { margin-top: 6px; font-size: 13px; }
+font-weight: 700; }
 
-/* ========================================================= FLOATING BUTTON ========================================================= */
+.empty-subtitle { margin-top: 6px;
+
+font-size: 13px; }
+
+/* ========================================================= FLOATING + BUTTON ========================================================= */
 
 .fab { position: fixed;
 
@@ -287,25 +327,41 @@ right: 20px;
 
 bottom: calc(22px + env(safe-area-inset-bottom));
 
-width: 64px; height: 64px;
+width: 66px; height: 66px;
+
+border: none;
 
 border-radius: 50%;
 
 background: linear-gradient( 135deg, #6366f1, #7c3aed );
 
-color: #fff;
+color: white;
 
-font-size: 31px; line-height: 1;
+font-size: 34px;
+
+line-height: 1;
 
 display: flex; align-items: center; justify-content: center;
 
-box-shadow: 0 12px 30px rgba(99,102,241,.38);
+z-index: 9999;
 
-z-index: 50;
+cursor: pointer;
 
-touch-action: manipulation; }
+touch-action: manipulation;
 
-.fab:active { transform: scale(.88); }
+-webkit-user-select: none; user-select: none;
+
+-webkit-touch-callout: none;
+
+-webkit-appearance: none; appearance: none;
+
+box-shadow: 0 12px 30px rgba(99,102,241,.42);
+
+transition: transform .12s ease, box-shadow .12s ease; }
+
+.fab:active { transform: scale(.86);
+
+box-shadow: 0 6px 16px rgba(99,102,241,.30); }
 
 /* ========================================================= MODAL ========================================================= */
 
@@ -313,19 +369,21 @@ touch-action: manipulation; }
 
 inset: 0;
 
-display: none; align-items: flex-end;
+display: none;
 
-background: rgba(0,0,0,.45);
+align-items: flex-end;
 
-z-index: 100;
+background: rgba(0,0,0,.48);
 
-padding-top: env(safe-area-inset-top);
+z-index: 10000;
 
 touch-action: none; }
 
 .modal.active { display: flex; }
 
-.modal-content { width: 100%; max-width: 560px;
+.modal-content { width: 100%;
+
+max-width: 560px;
 
 max-height: calc( 100dvh - env(safe-area-inset-top) );
 
@@ -335,21 +393,21 @@ overflow-y: auto;
 
 margin: 0 auto;
 
-padding: 12px 20px calc(24px + env(safe-area-inset-bottom));
+padding: 14px 20px calc(24px + env(safe-area-inset-bottom));
 
 border-radius: 28px 28px 0 0;
 
-background: #fff;
+background: white;
 
-animation: sheetUp .25s cubic-bezier(.2,.8,.2,1);
+animation: sheetUp .25s cubic-bezier(.2,.8,.2,1); }
 
-touch-action: pan-y; }
+@keyframes sheetUp {
 
-@keyframes sheetUp { from { transform: translateY(100%); }
+from { transform: translateY(100%); }
 
 to { transform: translateY(0); } }
 
-.sheet-handle { width: 44px; height: 5px;
+.sheet-handle { width: 42px; height: 5px;
 
 margin: 0 auto 17px;
 
@@ -357,7 +415,9 @@ border-radius: 10px;
 
 background: #d4d4d8; }
 
-.modal-title { font-size: 23px; font-weight: 850;
+.modal-title { font-size: 23px;
+
+font-weight: 850;
 
 margin-bottom: 18px; }
 
@@ -379,23 +439,29 @@ margin-bottom: 17px; }
 
 .type-button { min-height: 48px;
 
+border: 0;
+
 border-radius: 11px;
 
 background: transparent;
 
 color: #71717a;
 
-font-size: 14px; font-weight: 750;
+font-size: 14px;
+
+font-weight: 750;
 
 touch-action: manipulation; }
 
-.type-button:active { transform: scale(.97); }
+.type-button.active-expense { background: white;
 
-.type-button.active-expense { background: #fff; color: #dc2626;
+color: #dc2626;
 
 box-shadow: 0 2px 8px rgba(0,0,0,.08); }
 
-.type-button.active-income { background: #fff; color: #16a34a;
+.type-button.active-income { background: white;
+
+color: #16a34a;
 
 box-shadow: 0 2px 8px rgba(0,0,0,.08); }
 
@@ -409,7 +475,9 @@ margin-bottom: 7px;
 
 color: #3f3f46;
 
-font-size: 12px; font-weight: 700; }
+font-size: 12px;
+
+font-weight: 700; }
 
 input, select { width: 100%;
 
@@ -423,19 +491,19 @@ border-radius: 14px;
 
 outline: none;
 
-background: #fff;
+background: white;
 
 color: #18181b;
 
 font-size: 16px;
 
-touch-action: manipulation; }
+-webkit-appearance: none; appearance: none; }
 
 input:focus, select:focus { border-color: #6366f1;
 
 box-shadow: 0 0 0 3px rgba(99,102,241,.10); }
 
-/* ========================================================= SAVE / CANCEL ========================================================= */
+/* ========================================================= SAVE ========================================================= */
 
 .save-button { width: 100%;
 
@@ -443,13 +511,17 @@ min-height: 54px;
 
 margin-top: 7px;
 
+border: 0;
+
 border-radius: 15px;
 
 background: linear-gradient( 135deg, #6366f1, #7c3aed );
 
-color: #fff;
+color: white;
 
-font-size: 16px; font-weight: 800;
+font-size: 16px;
+
+font-weight: 800;
 
 box-shadow: 0 8px 20px rgba(99,102,241,.23);
 
@@ -459,13 +531,17 @@ touch-action: manipulation; }
 
 .cancel-button { width: 100%;
 
-min-height: 50px;
+min-height: 48px;
+
+border: 0;
 
 background: transparent;
 
 color: #71717a;
 
-font-size: 15px; font-weight: 600;
+font-size: 15px;
+
+font-weight: 600;
 
 touch-action: manipulation; }
 
@@ -479,9 +555,9 @@ overflow: hidden;
 
 pointer-events: none;
 
-z-index: 999; }
+z-index: 20000; }
 
-/* ========================================================= MESSAGE ========================================================= */
+/* ========================================================= REWARD MESSAGE ========================================================= */
 
 .reward-message { position: fixed;
 
@@ -495,9 +571,11 @@ padding: 14px 22px;
 
 border-radius: 999px;
 
-color: #fff;
+color: white;
 
-font-size: 19px; font-weight: 850;
+font-size: 18px;
+
+font-weight: 850;
 
 white-space: nowrap;
 
@@ -509,7 +587,9 @@ animation: rewardMessage 1.4s ease-out forwards; }
 
 .reward-message.expense { background: linear-gradient( 135deg, #dc2626, #ef4444 ); }
 
-@keyframes rewardMessage { 0% { opacity: 0;
+@keyframes rewardMessage {
+
+0% { opacity: 0;
 
 transform: translate(-50%,-50%) scale(.4); }
 
@@ -525,7 +605,7 @@ transform: translate(-50%,-50%) scale(1.12); }
 
 transform: translate(-50%,-80%) scale(.9); } }
 
-/* ========================================================= INCOME COINS ========================================================= */
+/* ========================================================= COINS ========================================================= */
 
 .coin { position: absolute;
 
@@ -535,9 +615,11 @@ font-size: 27px;
 
 animation: coinBurst 1.2s cubic-bezier(.15,.8,.3,1) forwards; }
 
-@keyframes coinBurst { 0% { opacity: 0;
+@keyframes coinBurst {
 
-transform: translate(-50%,-50%) scale(.2) rotate(0); }
+0% { opacity: 0;
+
+transform: translate(-50%,-50%) scale(.2) rotate(0deg); }
 
 15% { opacity: 1; }
 
@@ -545,7 +627,7 @@ transform: translate(-50%,-50%) scale(.2) rotate(0); }
 
 transform: translate( calc(-50% + var(--x)), calc(-50% + var(--y)) ) scale(1) rotate(var(--rotation)); } }
 
-/* ========================================================= GLOW ========================================================= */
+/* ========================================================= GREEN GLOW ========================================================= */
 
 .reward-glow { position: fixed;
 
@@ -561,7 +643,9 @@ transform: translate(-50%,-50%);
 
 animation: glowBurst .8s ease-out forwards; }
 
-@keyframes glowBurst { 0% { opacity: .8;
+@keyframes glowBurst {
+
+0% { opacity: .8;
 
 transform: translate(-50%,-50%) scale(.2); }
 
@@ -569,7 +653,7 @@ transform: translate(-50%,-50%) scale(.2); }
 
 transform: translate(-50%,-50%) scale(15); } }
 
-/* ========================================================= EXPENSE ========================================================= */
+/* ========================================================= EXPENSE FLASH ========================================================= */
 
 .loss-flash { position: fixed;
 
@@ -579,15 +663,21 @@ background: rgba(239,68,68,.16);
 
 animation: lossFlash .55s ease-out forwards; }
 
-@keyframes lossFlash { 0% { opacity: 0; }
+@keyframes lossFlash {
+
+0% { opacity: 0; }
 
 25% { opacity: 1; }
 
 100% { opacity: 0; } }
 
+/* ========================================================= SHAKE ========================================================= */
+
 .shake { animation: shakeScreen .45s ease; }
 
-@keyframes shakeScreen { 0%,100% { transform: translateX(0); }
+@keyframes shakeScreen {
+
+0%,100% { transform: translateX(0); }
 
 20% { transform: translateX(-7px); }
 
@@ -597,6 +687,8 @@ animation: lossFlash .55s ease-out forwards; }
 
 80% { transform: translateX(5px); } }
 
+/* ========================================================= LOSS COINS ========================================================= */
+
 .loss-coin { position: absolute;
 
 left: 50%; top: 35%;
@@ -605,7 +697,9 @@ font-size: 26px;
 
 animation: lossCoin 1.1s ease-in forwards; }
 
-@keyframes lossCoin { 0% { opacity: 0;
+@keyframes lossCoin {
+
+0% { opacity: 0;
 
 transform: translate(-50%,-50%) scale(1.2); }
 
@@ -639,29 +733,29 @@ input, select { background: #18181b; color: #fafafa; border-color: #3f3f46; }
 
 .cancel-button { color: #a1a1aa; } }
 
-/* ========================================================= TABLET / DESKTOP ========================================================= */
+/* ========================================================= TABLET ========================================================= */
 
-@media (min-width: 700px) {
+@media (min-width:700px) {
 
 body { padding: 20px 0; }
 
-.app { min-height: calc(100vh - 40px);
+.app { border-radius: 28px;
 
-border-radius: 28px;
+min-height: calc(100vh - 40px);
 
 background: #f5f5fa;
 
 box-shadow: 0 10px 50px rgba(0,0,0,.08); }
 
-.fab { position: absolute;
-
-right: calc(50% - 280px); } }
+.fab { right: calc(50% - 280px); } }
 
 /* ========================================================= REDUCED MOTION ========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion:reduce) {
 
-, ::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } } </style> </head>
+, ::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+
+</style> </head>
 
 <body>
 
@@ -673,7 +767,7 @@ right: calc(50% - 280px); } }
 
 <div class="logo"> Spend<span>ly</span> </div>
 
-<button class="header-button" id="clearButton" aria-label="Clear all transactions" type="button"> ⚙️ </button>
+<button type="button" class="header-button" id="clearButton" aria-label="Clear all transactions"> ⚙️ </button>
 
 </header>
 
@@ -731,21 +825,25 @@ right: calc(50% - 280px); } }
 
 </main>
 
-<button class="fab" id="addButton" aria-label="Add transaction" type="button"> + </button>
+<!-- ===================================================== ADD BUTTON ===================================================== -->
+
+<button type="button" class="fab" id="addButton" aria-label="Add transaction" aria-haspopup="dialog"> + </button>
+
+<!-- ===================================================== MODAL ===================================================== -->
 
 <div class="modal" id="modal" aria-hidden="true">
 
-<div class="modal-content" id="modalContent">
+<div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
 
 <div class="sheet-handle"></div>
 
-<div class="modal-title"> Add Transaction </div>
+<div class="modal-title" id="modalTitle"> Add Transaction </div>
 
 <div class="type-selector">
 
-<button class="type-button active-expense" id="expenseButton" type="button"> Expense </button>
+<button type="button" class="type-button active-expense" id="expenseButton"> Expense </button>
 
-<button class="type-button" id="incomeButton" type="button"> Income </button>
+<button type="button" class="type-button" id="incomeButton"> Income </button>
 
 </div>
 
@@ -753,7 +851,7 @@ right: calc(50% - 280px); } }
 
 <label class="form-label" for="title"> Description </label>
 
-<input id="title" type="text" maxlength="60" autocomplete="off" autocapitalize="sentences" placeholder="e.g. Lunch">
+<input id="title" type="text" maxlength="60" autocomplete="off" placeholder="e.g. Lunch">
 
 </div>
 
@@ -771,19 +869,33 @@ right: calc(50% - 280px); } }
 
 <select id="category">
 
-<option value="Food">🍔 Food</option> <option value="Transport">🚗 Transport</option> <option value="Shopping">🛍️ Shopping</option> <option value="Bills">📄 Bills</option> <option value="Entertainment">🎬 Entertainment</option> <option value="Health">❤️ Health</option> <option value="Other">💰 Other</option>
+<option value="Food"> 🍔 Food </option>
+
+<option value="Transport"> 🚗 Transport </option>
+
+<option value="Shopping"> 🛍️ Shopping </option>
+
+<option value="Bills"> 📄 Bills </option>
+
+<option value="Entertainment"> 🎬 Entertainment </option>
+
+<option value="Health"> ❤️ Health </option>
+
+<option value="Other"> 💰 Other </option>
 
 </select>
 
 </div>
 
-<button class="save-button" id="saveButton" type="button"> Save Transaction </button>
+<button type="button" class="save-button" id="saveButton"> Save Transaction </button>
 
-<button class="cancel-button" id="cancelButton" type="button"> Cancel </button>
+<button type="button" class="cancel-button" id="cancelButton"> Cancel </button>
 
-</div> </div>
+</div>
 
-<script> "use strict";
+</div>
+
+<script>
 
 /* ========================================================= STORAGE ========================================================= */
 
@@ -791,73 +903,87 @@ const STORAGEKEY = "spendlytransactions_v2";
 
 let transactions = [];
 
-try { const stored = localStorage.getItem(STORAGE_KEY);
+try {
 
-if (stored) { const parsed = JSON.parse(stored);
+const saved = localStorage.getItem(STORAGE_KEY);
 
-if (Array.isArray(parsed)) { transactions = parsed; } } } catch (error) { transactions = []; }
+if (saved) { transactions = JSON.parse(saved); }
+
+if (!Array.isArray(transactions)) { transactions = []; }
+
+} catch (error) {
+
+transactions = [];
+
+}
+
+/* ========================================================= STATE ========================================================= */
 
 let currentType = "expense";
 
+let lastTouchTime = 0;
+
 /* ========================================================= DOM ========================================================= */
 
-const modal = document.getElementById("modal"); const modalContent = document.getElementById("modalContent");
+const modal = document.getElementById("modal");
 
-const titleInput = document.getElementById("title"); const amountInput = document.getElementById("amount"); const categoryInput = document.getElementById("category");
+const addButton = document.getElementById("addButton");
+
+const titleInput = document.getElementById("title");
+
+const amountInput = document.getElementById("amount");
+
+const categoryInput = document.getElementById("category");
 
 const expenseButton = document.getElementById("expenseButton");
 
 const incomeButton = document.getElementById("incomeButton");
 
-const addButton = document.getElementById("addButton");
+const saveButton = document.getElementById("saveButton");
 
 const cancelButton = document.getElementById("cancelButton");
 
-const saveButton = document.getElementById("saveButton");
+const clearButton = document.getElementById("clearButton");
+
+const celebration = document.getElementById("celebration");
 
 /* ========================================================= MONEY ========================================================= */
 
 function formatMoney(amount) {
 
-return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(amount); }
+return new Intl.NumberFormat( "en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 } ).format(amount);
 
-/* ========================================================= IOS SAFE HAPTICS ========================================================= */
+}
 
-function haptic(type = "light") {
+/* ========================================================= HAPTICS ========================================================= */
 
-/* iOS Safari normally does not expose navigator.vibrate. Android browsers may support it.
-
-This function therefore safely uses vibration when available and otherwise does nothing. */
+function vibrate(pattern) {
 
 try {
 
-if ("vibrate" in navigator) {
+if ( navigator && typeof navigator.vibrate === "function" ) {
 
-if (type === "success") { navigator.vibrate([20, 30, 40]); }
+navigator.vibrate(pattern);
 
-else if (type === "error") { navigator.vibrate([35, 25, 35]); }
+}
 
-else { navigator.vibrate(12); } }
+} catch (error) {
 
-} catch (error) { // Optional feature. } }
+// iOS Safari does not expose navigator.vibrate. }
 
-/* ========================================================= TYPE ========================================================= */
+}
+
+/* ========================================================= SET TYPE ========================================================= */
 
 function setType(type) {
 
 currentType = type;
 
-expenseButton.classList.remove( "active-expense" );
+expenseButton.className = "type-button" + ( type === "expense" ? " active-expense" : "" );
 
-incomeButton.classList.remove( "active-income" );
+incomeButton.className = "type-button" + ( type === "income" ? " active-income" : "" );
 
-if (type === "expense") {
-
-expenseButton.classList.add( "active-expense" );
-
-} else {
-
-incomeButton.classList.add( "active-income" ); } }
+}
 
 /* ========================================================= OPEN MODAL ========================================================= */
 
@@ -869,13 +995,9 @@ modal.setAttribute( "aria-hidden", "false" );
 
 document.body.style.overflow = "hidden";
 
-haptic();
+vibrate(10);
 
-setTimeout(() => {
-
-titleInput.focus();
-
-}, 300); }
+}
 
 /* ========================================================= CLOSE MODAL ========================================================= */
 
@@ -887,9 +1009,41 @@ modal.setAttribute( "aria-hidden", "true" );
 
 document.body.style.overflow = "";
 
-titleInput.value = ""; amountInput.value = ""; categoryInput.value = "Food";
+titleInput.value = "";
 
-setType("expense"); }
+amountInput.value = "";
+
+categoryInput.value = "Food";
+
+setType("expense");
+
+}
+
+/* ========================================================= SAFE HTML ========================================================= */
+
+function escapeHTML(text) {
+
+const element = document.createElement("div");
+
+element.textContent = text;
+
+return element.innerHTML;
+
+}
+
+/* ========================================================= CATEGORY ICON ========================================================= */
+
+function getIcon(category) {
+
+const icons = {
+
+Food: "🍔", Transport: "🚗", Shopping: "🛍️", Bills: "📄", Entertainment: "🎬", Health: "❤️", Other: "💰"
+
+};
+
+return icons[category] || "💰";
+
+}
 
 /* ========================================================= SAVE DATA ========================================================= */
 
@@ -899,15 +1053,13 @@ try {
 
 localStorage.setItem( STORAGE_KEY, JSON.stringify(transactions) );
 
-return true;
-
 } catch (error) {
 
-console.error( "Spendly storage error:", error );
+console.error( "Unable to save data:", error );
 
-alert( "Spendly could not save this transaction." );
+}
 
-return false; } }
+}
 
 /* ========================================================= SAVE TRANSACTION ========================================================= */
 
@@ -923,21 +1075,21 @@ if (!title) {
 
 alert( "Please enter a description." );
 
-titleInput.focus();
+return;
 
-return; }
+}
 
 if ( !Number.isFinite(amount) || amount <= 0 ) {
 
 alert( "Please enter a valid amount." );
 
-amountInput.focus();
+return;
 
-return; }
+}
 
 const transaction = {
 
-id: Date.now().toString() + Math.random() .toString(36) .slice(2),
+id: Date.now().toString() + Math.random() .toString(36) .substring(2),
 
 title: title,
 
@@ -947,17 +1099,19 @@ type: currentType,
 
 category: category,
 
-date: new Date().toISOString() };
+date: new Date().toISOString()
+
+};
 
 transactions.unshift(transaction);
 
-if (!saveData()) { return; }
+saveData();
+
+render();
 
 const savedType = currentType;
 
 closeModal();
-
-render();
 
 if (savedType === "income") {
 
@@ -965,15 +1119,15 @@ showIncomeReward(amount);
 
 } else {
 
-showExpenseLoss(amount); } }
+showExpenseLoss(amount);
+
+}
+
+}
 
 /* ========================================================= DELETE ========================================================= */
 
 function deleteTransaction(id) {
-
-const transaction = transactions.find( item => String(item.id) === String(id) );
-
-if (!transaction) { return; }
 
 transactions = transactions.filter( item => String(item.id) !== String(id) );
 
@@ -981,7 +1135,9 @@ saveData();
 
 render();
 
-haptic(); }
+vibrate(20);
+
+}
 
 /* ========================================================= CLEAR ========================================================= */
 
@@ -991,9 +1147,11 @@ if (transactions.length === 0) {
 
 alert( "There are no transactions to clear." );
 
-return; }
+return;
 
-const confirmed = confirm( "Delete all transactions?" );
+}
+
+const confirmed = window.confirm( "Delete all transactions?" );
 
 if (!confirmed) { return; }
 
@@ -1003,45 +1161,33 @@ saveData();
 
 render();
 
-haptic("error"); }
+vibrate([30,40,30]);
 
-/* ========================================================= ICON ========================================================= */
-
-function getIcon(category) {
-
-const icons = {
-
-Food: "🍔", Transport: "🚗", Shopping: "🛍️", Bills: "📄", Entertainment: "🎬", Health: "❤️", Other: "💰" };
-
-return icons[category] || "💰"; }
-
-/* ========================================================= HTML SAFETY ========================================================= */
-
-function escapeHTML(value) {
-
-const div = document.createElement("div");
-
-div.textContent = String(value);
-
-return div.innerHTML; }
+}
 
 /* ========================================================= RENDER ========================================================= */
 
 function render() {
 
-let income = 0; let expenses = 0;
+let income = 0;
 
-transactions.forEach(transaction => {
+let expenses = 0;
+
+transactions.forEach( transaction => {
 
 const amount = Number(transaction.amount) || 0;
 
-if (transaction.type === "income") {
+if ( transaction.type === "income" ) {
 
 income += amount;
 
 } else {
 
-expenses += amount; } });
+expenses += amount;
+
+}
+
+} );
 
 const balance = income - expenses;
 
@@ -1051,13 +1197,15 @@ document.getElementById("income") .textContent = formatMoney(income);
 
 document.getElementById("expenses") .textContent = formatMoney(expenses);
 
-document.getElementById("transactionCount") .textContent = transactions.length ? transactions.length : "";
+document.getElementById("transactionCount") .textContent = transactions.length ? ${transactions.length} : "";
 
 const container = document.getElementById( "transactions" );
 
 if (transactions.length === 0) {
 
-container.innerHTML = ` <div class="empty">
+container.innerHTML = `
+
+<div class="empty">
 
 <div class="empty-icon"> 💳 </div>
 
@@ -1065,11 +1213,15 @@ container.innerHTML = ` <div class="empty">
 
 <div class="empty-subtitle"> Tap + to add your first transaction. </div>
 
-</div> `;
+</div>
 
-return; }
+`;
 
-container.innerHTML = transactions.map(transaction => {
+return;
+
+}
+
+container.innerHTML = transactions.map( transaction => {
 
 const isIncome = transaction.type === "income";
 
@@ -1077,15 +1229,17 @@ const sign = isIncome ? "+" : "-";
 
 const color = isIncome ? "income" : "expense";
 
-return ` <div class="transaction">
+return `
 
-<div class="transaction-icon"> ${getIcon(transaction.category)} </div>
+<div class="transaction">
+
+<div class="transaction-icon"> ${getIcon( transaction.category )} </div>
 
 <div class="transaction-info">
 
-<div class="transaction-title"> ${escapeHTML(transaction.title)} </div>
+<div class="transaction-title"> ${escapeHTML( transaction.title )} </div>
 
-<div class="transaction-category"> ${escapeHTML(transaction.category)} </div>
+<div class="transaction-category"> ${escapeHTML( transaction.category )} </div>
 
 </div>
 
@@ -1096,39 +1250,43 @@ s
 i
 g
 n
-{formatMoney( Number(transaction.amount) )} </div>
+{formatMoney( Number( transaction.amount ) )} </div>
 
-<button class="delete-button" data-delete-id="${escapeHTML(transaction.id)}" aria-label="Delete transaction" type="button"> 🗑️ </button>
+<button type="button" class="delete-button" data-delete-id="${transaction.id}" aria-label="Delete transaction"> 🗑️ </button>
 
 </div>
 
-</div> `;
+</div>
 
-}).join("");
+`;
 
-container .querySelectorAll("[data-delete-id]") .forEach(button => {
+} ).join("");
 
-button.addEventListener( "click", event => {
+container .querySelectorAll( "[data-delete-id]" ) .forEach(button => {
 
-event.preventDefault(); event.stopPropagation();
+button.addEventListener( "click", function(event) {
 
-deleteTransaction( button.dataset.deleteId ); } );
+event.stopPropagation();
 
-}); }
+deleteTransaction( button.dataset.deleteId );
+
+} );
+
+});
+
+}
 
 /* ========================================================= INCOME REWARD ========================================================= */
 
 function showIncomeReward(amount) {
 
-const container = document.getElementById( "celebration" );
-
-container.innerHTML = "";
+celebration.innerHTML = "";
 
 const glow = document.createElement("div");
 
 glow.className = "reward-glow";
 
-container.appendChild(glow);
+celebration.appendChild(glow);
 
 const message = document.createElement("div");
 
@@ -1136,11 +1294,11 @@ message.className = "reward-message income";
 
 message.textContent = 💰 +${formatMoney(amount)} Added!;
 
-container.appendChild(message);
+celebration.appendChild(message);
 
 const coins = [ "🪙", "💰", "🪙", "💵", "🪙", "✨", "💰", "🪙" ];
 
-coins.forEach((coin, index) => {
+coins.forEach( (coin, index) => {
 
 const element = document.createElement("div");
 
@@ -1158,29 +1316,27 @@ element.style.setProperty( "--y", ${Math.sin(angle) * distance}px );
 
 element.style.setProperty( "--rotation", ${Math.random() * 720 - 360}deg );
 
-container.appendChild(element); });
+celebration.appendChild(element);
 
-haptic("success");
+} );
 
-setTimeout(() => {
+vibrate([25,35,50]);
 
-container.innerHTML = "";
+setTimeout( () => { celebration.innerHTML = ""; }, 1600 );
 
-}, 1600); }
+}
 
 /* ========================================================= EXPENSE LOSS ========================================================= */
 
 function showExpenseLoss(amount) {
 
-const container = document.getElementById( "celebration" );
-
-container.innerHTML = "";
+celebration.innerHTML = "";
 
 const flash = document.createElement("div");
 
 flash.className = "loss-flash";
 
-container.appendChild(flash);
+celebration.appendChild(flash);
 
 const message = document.createElement("div");
 
@@ -1188,11 +1344,11 @@ message.className = "reward-message expense";
 
 message.textContent = 💸 -${formatMoney(amount)};
 
-container.appendChild(message);
+celebration.appendChild(message);
 
 const coins = [ "💸", "🪙", "💸", "🪙", "💸" ];
 
-coins.forEach((coin, index) => {
+coins.forEach( (coin,index) => {
 
 const element = document.createElement("div");
 
@@ -1202,104 +1358,141 @@ element.textContent = coin;
 
 element.style.setProperty( "--x", ${(index - 2) * 70}px );
 
-container.appendChild(element); });
+celebration.appendChild(element);
+
+} );
 
 const app = document.querySelector(".app");
 
-app.classList.remove("shake");
-
-void app.offsetWidth;
-
 app.classList.add("shake");
 
-setTimeout(() => {
+setTimeout( () => { app.classList.remove("shake"); }, 500 );
 
-app.classList.remove("shake");
+vibrate([35,25,35]);
 
-}, 500);
+setTimeout( () => { celebration.innerHTML = ""; }, 1500 );
 
-haptic("error");
+}
 
-setTimeout(() => {
+/* ========================================================= RELIABLE TOUCH HANDLER ========================================================= */
 
-container.innerHTML = "";
+function touchButton(element, action) {
 
-}, 1500); }
+let handled = false;
 
-/* ========================================================= EVENTS ========================================================= */
+element.addEventListener( "touchend", function(event) {
 
-addButton.addEventListener( "click", openModal );
+event.preventDefault();
 
-cancelButton.addEventListener( "click", closeModal );
+handled = true;
 
-saveButton.addEventListener( "click", saveTransaction );
+lastTouchTime = Date.now();
 
-document .getElementById("clearButton") .addEventListener( "click", clearAll );
+action();
 
-expenseButton.addEventListener( "click", () => setType("expense") );
+}, { passive: false } );
 
-incomeButton.addEventListener( "click", () => setType("income") );
+element.addEventListener( "click", function(event) {
 
-/* ========================================================= BACKDROP ========================================================= */
+/* * iPhone can fire click after touchend. * Prevent the action from happening twice. */
 
-modal.addEventListener( "click", event => {
+if ( handled && Date.now() - lastTouchTime < 700 ) {
 
-if (event.target === modal) { closeModal(); }
+handled = false;
+
+return;
+
+}
+
+action();
+
+} );
+
+}
+
+/* ========================================================= BUTTON EVENTS ========================================================= */
+
+/*
+
+IMPORTANT:
+The + button uses touchend + click.
+This makes it much more reliable in iOS Safari.
+*/
+
+touchButton( addButton, openModal );
+
+touchButton( cancelButton, closeModal );
+
+touchButton( saveButton, saveTransaction );
+
+touchButton( clearButton, clearAll );
+
+touchButton( expenseButton, function() { setType("expense"); } );
+
+touchButton( incomeButton, function() { setType("income"); } );
+
+/* ========================================================= MODAL BACKDROP ========================================================= */
+
+modal.addEventListener( "touchend", function(event) {
+
+if ( event.target === modal ) {
+
+event.preventDefault();
+
+closeModal();
+
+}
+
+}, { passive: false } );
+
+modal.addEventListener( "click", function(event) {
+
+if ( event.target === modal ) {
+
+closeModal();
+
+}
 
 } );
 
 /* ========================================================= ESCAPE ========================================================= */
 
-document.addEventListener( "keydown", event => {
+document.addEventListener( "keydown", function(event) {
 
-if (event.key === "Escape") { closeModal(); }
+if ( event.key === "Escape" ) {
+
+closeModal();
+
+}
 
 } );
 
 /* ========================================================= ENTER ========================================================= */
 
-titleInput.addEventListener( "keydown", event => {
+titleInput.addEventListener( "keydown", function(event) {
 
-if (event.key === "Enter") {
+if ( event.key === "Enter" ) {
 
-event.preventDefault();
+amountInput.focus();
 
-amountInput.focus(); }
-
-} );
-
-amountInput.addEventListener( "keydown", event => {
-
-if (event.key === "Enter") {
-
-event.preventDefault();
-
-saveTransaction(); }
+}
 
 } );
 
-/* ========================================================= IOS KEYBOARD FIX ========================================================= */
+amountInput.addEventListener( "keydown", function(event) {
 
-if (window.visualViewport) {
+if ( event.key === "Enter" ) {
 
-window.visualViewport.addEventListener( "resize", () => {
+saveTransaction();
 
-if ( modal.classList.contains("active") ) {
+}
 
-setTimeout(() => {
-
-const active = document.activeElement;
-
-if ( active === titleInput || active === amountInput ) {
-
-active.scrollIntoView({ behavior: "smooth", block: "center" }); }
-
-}, 50); }
-
-} ); }
+} );
 
 /* ========================================================= INITIALIZE ========================================================= */
 
-render(); </script>
+render();
+
+</script>
 
 </body> </html> :::
