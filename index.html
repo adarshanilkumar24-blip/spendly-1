@@ -1,2838 +1,1305 @@
-:::writing{variant="document" id="74163" title="Spendly Mobile iOS + Android — Complete index.html"}
+:::writing{variant="document" id="74163" title="Spendly — iOS + Android Touch-Optimized index.html"} <!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8">
 
-<!DOCTYPE html>
-<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<head>
+<meta name="theme-color" content="#6366f1"> <meta name="apple-mobile-web-app-capable" content="yes"> <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <meta name="apple-mobile-web-app-title" content="Spendly"> <meta name="mobile-web-app-capable" content="yes">
 
-    <meta charset="UTF-8">
+<title>Spendly</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width,
-                 initial-scale=1.0,
-                 maximum-scale=1.0,
-                 user-scalable=no,
-                 viewport-fit=cover"
-    >
+<style> /* ========================================================= RESET / IOS ========================================================= */
 
-    <meta
-        name="theme-color"
-        content="#6366f1"
-    >
+{
+box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-    <meta
-        name="apple-mobile-web-app-capable"
-        content="yes"
-    >
+html { width: 100%; min-height: 100%; background: #f5f5fa; overscroll-behavior: none; }
 
-    <meta
-        name="apple-mobile-web-app-status-bar-style"
-        content="black-translucent"
-    >
+body { margin: 0; width: 100%; min-height: 100vh; min-height: 100dvh;
 
-    <meta
-        name="mobile-web-app-capable"
-        content="yes"
-    >
+font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-    <title>Spendly</title>
+background: #f5f5fa; color: #18181b;
 
+-webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%;
 
-    <style>
+overscroll-behavior-y: none; }
 
-        /* =====================================================
-           RESET
-        ===================================================== */
+button, input, select { font: inherit; }
 
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+button { -webkit-appearance: none; appearance: none; border: 0; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
 
-        html {
-            width: 100%;
-            min-height: 100%;
-            background: #f5f5fa;
-        }
+input, select { -webkit-appearance: none; appearance: none; }
 
-        body {
-            width: 100%;
-            min-height: 100vh;
-            min-height: 100dvh;
+button:focus, input:focus, select:focus { outline: none; }
 
-            margin: 0;
+/* ========================================================= APP ========================================================= */
 
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "SF Pro Display",
-                "SF Pro Text",
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
+.app { width: 100%; max-width: 560px; min-height: 100vh; min-height: 100dvh;
 
-            background: #f5f5fa;
+margin: 0 auto;
 
-            color: #18181b;
+padding-top: calc(8px + env(safe-area-inset-top));
 
-            overscroll-behavior-y: none;
+padding-bottom: calc(110px + env(safe-area-inset-bottom));
 
-            -webkit-font-smoothing: antialiased;
-        }
+transition: transform .35s ease; }
 
-        button,
-        input,
-        select {
-            font: inherit;
-        }
+/* ========================================================= HEADER ========================================================= */
 
-        button {
-            cursor: pointer;
-            touch-action: manipulation;
-        }
+.header { min-height: 70px;
 
+padding: 10px 18px;
 
-        /* =====================================================
-           APP
-        ===================================================== */
+display: flex; align-items: center; justify-content: space-between; }
 
-        .app {
-            width: 100%;
-            max-width: 560px;
+.logo { font-size: 28px; font-weight: 850; letter-spacing: -1.3px; }
 
-            min-height: 100vh;
-            min-height: 100dvh;
+.logo span { color: #6366f1; }
 
-            margin: 0 auto;
+.header-button { width: 48px; height: 48px;
 
-            padding-top:
-                env(safe-area-inset-top);
+border-radius: 50%;
 
-            padding-bottom:
-                calc(
-                    105px +
-                    env(safe-area-inset-bottom)
-                );
-        }
+background: #fff;
 
+display: flex; align-items: center; justify-content: center;
 
-        /* =====================================================
-           HEADER
-        ===================================================== */
+font-size: 19px;
 
-        .header {
-            padding:
-                18px
-                20px
-                14px;
+box-shadow: 0 5px 18px rgba(0,0,0,.07);
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+touch-action: manipulation; }
 
-        .logo {
-            font-size: 28px;
-            font-weight: 850;
-            letter-spacing: -1.3px;
-        }
+.header-button:active { transform: scale(.90); }
 
-        .logo span {
-            color: #6366f1;
-        }
+/* ========================================================= BALANCE ========================================================= */
 
-        .header-button {
-            width: 46px;
-            height: 46px;
+.balance-card { position: relative; overflow: hidden;
 
-            border: 0;
-            border-radius: 50%;
+margin: 5px 18px 18px;
 
-            background: white;
+padding: 25px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+border-radius: 28px;
 
-            font-size: 19px;
+color: #fff;
 
-            box-shadow:
-                0 5px 18px
-                rgba(0, 0, 0, .07);
+background: linear-gradient( 135deg, #6366f1 0%, #7c3aed 55%, #8b5cf6 100% );
 
-            transition:
-                transform .15s ease;
-        }
+box-shadow: 0 18px 40px rgba(99,102,241,.27); }
 
-        .header-button:active {
-            transform: scale(.9);
-        }
+.balance-card::before { content: "";
 
+position: absolute;
 
-        /* =====================================================
-           BALANCE
-        ===================================================== */
+width: 180px; height: 180px;
 
-        .balance-card {
-            position: relative;
+right: -80px; top: -80px;
 
-            overflow: hidden;
+border-radius: 50%;
 
-            margin:
-                5px
-                18px
-                18px;
+background: rgba(255,255,255,.08); }
 
-            padding: 25px;
+.balance-card::after { content: "";
 
-            border-radius: 28px;
+position: absolute;
 
-            color: white;
+width: 100px; height: 100px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #6366f1 0%,
-                    #7c3aed 55%,
-                    #8b5cf6 100%
-                );
+left: -45px; bottom: -45px;
 
-            box-shadow:
-                0 18px 40px
-                rgba(99, 102, 241, .27);
-        }
+border-radius: 50%;
 
-        .balance-card::before {
-            content: "";
+background: rgba(255,255,255,.06); }
 
-            position: absolute;
+.balance-content { position: relative; z-index: 2; }
 
-            width: 180px;
-            height: 180px;
+.balance-label { font-size: 14px; opacity: .78; }
 
-            right: -80px;
-            top: -80px;
+.balance { margin-top: 7px;
 
-            border-radius: 50%;
+font-size: clamp(32px, 9vw, 42px); line-height: 1.05;
 
-            background:
-                rgba(255,255,255,.08);
-        }
+font-weight: 850; letter-spacing: -1.5px;
 
-        .balance-card::after {
-            content: "";
+overflow-wrap: anywhere; }
 
-            position: absolute;
+.balance-subtitle { margin-top: 9px;
 
-            width: 100px;
-            height: 100px;
+font-size: 13px; opacity: .72; }
 
-            left: -45px;
-            bottom: -45px;
+/* ========================================================= SUMMARY ========================================================= */
 
-            border-radius: 50%;
+.summary { display: grid;
 
-            background:
-                rgba(255,255,255,.06);
-        }
+grid-template-columns: 1fr 1fr;
 
-        .balance-content {
-            position: relative;
-            z-index: 2;
-        }
+gap: 12px;
 
-        .balance-label {
-            font-size: 14px;
-            opacity: .78;
-        }
+padding: 0 18px; }
 
-        .balance {
-            margin-top: 7px;
+.summary-card { min-width: 0;
 
-            font-size: clamp(
-                32px,
-                9vw,
-                42px
-            );
+padding: 17px;
 
-            line-height: 1.05;
+border-radius: 20px;
 
-            font-weight: 850;
+background: #fff;
 
-            letter-spacing: -1.5px;
+box-shadow: 0 5px 20px rgba(0,0,0,.045); }
 
-            overflow-wrap: anywhere;
-        }
+.summary-icon { width: 40px; height: 40px;
 
-        .balance-subtitle {
-            margin-top: 9px;
+border-radius: 13px;
 
-            font-size: 13px;
+display: flex; align-items: center; justify-content: center;
 
-            opacity: .72;
-        }
+font-size: 18px;
 
+margin-bottom: 12px; }
 
-        /* =====================================================
-           SUMMARY CARDS
-        ===================================================== */
+.income-icon { color: #16a34a; background: #dcfce7; }
 
-        .summary {
-            display: grid;
+.expense-icon { color: #dc2626; background: #fee2e2; }
 
-            grid-template-columns:
-                1fr 1fr;
+.summary-title { color: #71717a;
 
-            gap: 12px;
+font-size: 12px; font-weight: 600; }
 
-            padding:
-                0
-                18px;
-        }
+.summary-amount { margin-top: 5px;
 
-        .summary-card {
-            min-width: 0;
+font-size: clamp(16px, 4.7vw, 20px); font-weight: 800;
 
-            padding: 17px;
+overflow-wrap: anywhere; }
 
-            border-radius: 20px;
+.income { color: #16a34a; }
 
-            background: white;
+.expense { color: #dc2626; }
 
-            box-shadow:
-                0 5px 20px
-                rgba(0, 0, 0, .045);
-        }
+/* ========================================================= TRANSACTIONS ========================================================= */
 
-        .summary-icon {
-            width: 38px;
-            height: 38px;
+.section { padding: 25px 18px 0; }
 
-            border-radius: 13px;
+.section-header { display: flex; align-items: center; justify-content: space-between;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+margin-bottom: 13px; }
 
-            font-size: 18px;
+.section-title { font-size: 20px; font-weight: 800; letter-spacing: -.3px; }
 
-            margin-bottom: 12px;
-        }
+.transaction-count { color: #71717a;
 
-        .income-icon {
-            color: #16a34a;
-            background: #dcfce7;
-        }
+font-size: 12px; font-weight: 600; }
 
-        .expense-icon {
-            color: #dc2626;
-            background: #fee2e2;
-        }
+.transaction { width: 100%;
 
-        .summary-title {
-            color: #71717a;
+min-height: 72px;
 
-            font-size: 12px;
+display: flex; align-items: center;
 
-            font-weight: 600;
-        }
+gap: 12px;
 
-        .summary-amount {
-            margin-top: 5px;
+margin-bottom: 9px;
 
-            font-size: clamp(
-                16px,
-                4.7vw,
-                20px
-            );
+padding: 13px;
 
-            font-weight: 800;
+border-radius: 18px;
 
-            overflow-wrap: anywhere;
-        }
+background: #fff;
 
+box-shadow: 0 3px 14px rgba(0,0,0,.035);
 
-        /* =====================================================
-           TRANSACTIONS SECTION
-        ===================================================== */
+touch-action: manipulation;
 
-        .section {
-            padding:
-                25px
-                18px
-                0;
-        }
+transition: transform .12s ease; }
 
-        .section-header {
-            display: flex;
+.transaction:active { transform: scale(.985); }
 
-            align-items: center;
-            justify-content: space-between;
+.transaction-icon { width: 46px; height: 46px;
 
-            margin-bottom: 13px;
-        }
+flex: 0 0 46px;
 
-        .section-title {
-            font-size: 20px;
+border-radius: 14px;
 
-            font-weight: 800;
+display: flex; align-items: center; justify-content: center;
 
-            letter-spacing: -.3px;
-        }
+background: #f4f4f5;
 
-        .transaction-count {
-            color: #71717a;
+font-size: 20px; }
 
-            font-size: 12px;
+.transaction-info { flex: 1; min-width: 0; }
 
-            font-weight: 600;
-        }
+.transaction-title { font-size: 15px; font-weight: 700;
 
+white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* =====================================================
-           TRANSACTION CARD
-        ===================================================== */
+.transaction-category { margin-top: 4px;
 
-        .transaction {
-            width: 100%;
+color: #71717a;
 
-            display: flex;
-            align-items: center;
+font-size: 11px; font-weight: 500; }
 
-            gap: 12px;
+.transaction-right { display: flex; align-items: center; gap: 4px;
 
-            margin-bottom: 9px;
+flex-shrink: 0; }
 
-            padding: 13px;
+.transaction-amount { font-size: 14px; font-weight: 800; white-space: nowrap; }
 
-            border-radius: 18px;
+.delete-button { width: 44px; height: 44px;
 
-            background: white;
+flex: 0 0 44px;
 
-            box-shadow:
-                0 3px 14px
-                rgba(0,0,0,.035);
+border-radius: 12px;
 
-            transition:
-                transform .15s ease;
-        }
+background: transparent;
 
-        .transaction:active {
-            transform: scale(.985);
-        }
+color: #a1a1aa;
 
-        .transaction-icon {
-            width: 46px;
-            height: 46px;
+display: flex; align-items: center; justify-content: center;
 
-            flex: 0 0 46px;
+font-size: 17px;
 
-            border-radius: 14px;
+touch-action: manipulation; }
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+.delete-button:active { background: #fee2e2; color: #dc2626;
 
-            background: #f4f4f5;
+transform: scale(.90); }
 
-            font-size: 20px;
-        }
+/* ========================================================= EMPTY ========================================================= */
 
-        .transaction-info {
-            flex: 1;
-            min-width: 0;
-        }
+.empty { padding: 50px 20px;
 
-        .transaction-title {
-            font-size: 15px;
+text-align: center;
 
-            font-weight: 700;
+color: #71717a; }
 
-            white-space: nowrap;
+.empty-icon { font-size: 48px; margin-bottom: 12px; }
 
-            overflow: hidden;
+.empty-title { color: #27272a;
 
-            text-overflow: ellipsis;
-        }
+font-size: 16px; font-weight: 700; }
 
-        .transaction-category {
-            margin-top: 4px;
+.empty-subtitle { margin-top: 6px; font-size: 13px; }
 
-            color: #71717a;
+/* ========================================================= FLOATING BUTTON ========================================================= */
 
-            font-size: 11px;
+.fab { position: fixed;
 
-            font-weight: 500;
-        }
+right: 20px;
 
-        .transaction-right {
-            display: flex;
+bottom: calc(22px + env(safe-area-inset-bottom));
 
-            align-items: center;
+width: 64px; height: 64px;
 
-            gap: 5px;
-        }
+border-radius: 50%;
 
-        .transaction-amount {
-            font-size: 14px;
+background: linear-gradient( 135deg, #6366f1, #7c3aed );
 
-            font-weight: 800;
+color: #fff;
 
-            white-space: nowrap;
-        }
+font-size: 31px; line-height: 1;
 
-        .income {
-            color: #16a34a;
-        }
+display: flex; align-items: center; justify-content: center;
 
-        .expense {
-            color: #dc2626;
-        }
+box-shadow: 0 12px 30px rgba(99,102,241,.38);
 
-        .delete-button {
-            width: 38px;
-            height: 38px;
+z-index: 50;
 
-            flex: 0 0 38px;
+touch-action: manipulation; }
 
-            border: 0;
+.fab:active { transform: scale(.88); }
 
-            border-radius: 12px;
+/* ========================================================= MODAL ========================================================= */
 
-            background: transparent;
+.modal { position: fixed;
 
-            color: #a1a1aa;
+inset: 0;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+display: none; align-items: flex-end;
 
-            font-size: 16px;
-        }
+background: rgba(0,0,0,.45);
 
-        .delete-button:active {
-            background: #fee2e2;
-            color: #dc2626;
-        }
+z-index: 100;
 
+padding-top: env(safe-area-inset-top);
 
-        /* =====================================================
-           EMPTY STATE
-        ===================================================== */
+touch-action: none; }
 
-        .empty {
-            padding: 50px 20px;
+.modal.active { display: flex; }
 
-            text-align: center;
+.modal-content { width: 100%; max-width: 560px;
 
-            color: #71717a;
-        }
+max-height: calc( 100dvh - env(safe-area-inset-top) );
 
-        .empty-icon {
-            font-size: 48px;
+overflow-y: auto;
 
-            margin-bottom: 12px;
-        }
+-webkit-overflow-scrolling: touch;
 
-        .empty-title {
-            color: #27272a;
+margin: 0 auto;
 
-            font-size: 16px;
+padding: 12px 20px calc(24px + env(safe-area-inset-bottom));
 
-            font-weight: 700;
-        }
+border-radius: 28px 28px 0 0;
 
-        .empty-subtitle {
-            margin-top: 6px;
+background: #fff;
 
-            font-size: 13px;
-        }
+animation: sheetUp .25s cubic-bezier(.2,.8,.2,1);
 
+touch-action: pan-y; }
 
-        /* =====================================================
-           FLOATING ACTION BUTTON
-        ===================================================== */
+@keyframes sheetUp { from { transform: translateY(100%); }
 
-        .fab {
-            position: fixed;
+to { transform: translateY(0); } }
 
-            right: 20px;
+.sheet-handle { width: 44px; height: 5px;
 
-            bottom:
-                calc(
-                    22px +
-                    env(safe-area-inset-bottom)
-                );
+margin: 0 auto 17px;
 
-            width: 62px;
-            height: 62px;
+border-radius: 10px;
 
-            border: 0;
+background: #d4d4d8; }
 
-            border-radius: 50%;
+.modal-title { font-size: 23px; font-weight: 850;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #6366f1,
-                    #7c3aed
-                );
+margin-bottom: 18px; }
 
-            color: white;
+/* ========================================================= TYPE SELECTOR ========================================================= */
 
-            font-size: 30px;
+.type-selector { display: grid;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+grid-template-columns: 1fr 1fr;
 
-            box-shadow:
-                0 12px 30px
-                rgba(99,102,241,.38);
+gap: 4px;
 
-            z-index: 50;
+padding: 4px;
 
-            transition:
-                transform .15s ease;
-        }
+border-radius: 14px;
 
-        .fab:active {
-            transform:
-                scale(.88);
-        }
+background: #f4f4f5;
 
+margin-bottom: 17px; }
 
-        /* =====================================================
-           MODAL / BOTTOM SHEET
-        ===================================================== */
+.type-button { min-height: 48px;
 
-        .modal {
-            position: fixed;
+border-radius: 11px;
 
-            inset: 0;
+background: transparent;
 
-            display: none;
+color: #71717a;
 
-            align-items: flex-end;
+font-size: 14px; font-weight: 750;
 
-            background:
-                rgba(0,0,0,.45);
+touch-action: manipulation; }
 
-            z-index: 100;
+.type-button:active { transform: scale(.97); }
 
-            padding-top:
-                env(safe-area-inset-top);
-        }
+.type-button.active-expense { background: #fff; color: #dc2626;
 
-        .modal.active {
-            display: flex;
-        }
+box-shadow: 0 2px 8px rgba(0,0,0,.08); }
 
-        .modal-content {
-            width: 100%;
+.type-button.active-income { background: #fff; color: #16a34a;
 
-            max-width: 560px;
+box-shadow: 0 2px 8px rgba(0,0,0,.08); }
 
-            max-height:
-                calc(
-                    100dvh -
-                    env(safe-area-inset-top)
-                );
+/* ========================================================= FORM ========================================================= */
 
-            overflow-y: auto;
+.form-group { margin-bottom: 14px; }
 
-            margin:
-                0 auto;
+.form-label { display: block;
 
-            padding:
-                14px
-                20px
-                calc(
-                    24px +
-                    env(safe-area-inset-bottom)
-                );
+margin-bottom: 7px;
 
-            border-radius:
-                28px
-                28px
-                0
-                0;
+color: #3f3f46;
 
-            background: white;
+font-size: 12px; font-weight: 700; }
 
-            animation:
-                sheetUp
-                .25s
-                cubic-bezier(
-                    .2,
-                    .8,
-                    .2,
-                    1
-                );
-        }
+input, select { width: 100%;
 
-        @keyframes sheetUp {
+min-height: 52px;
 
-            from {
-                transform:
-                    translateY(100%);
-            }
+padding: 12px 14px;
 
-            to {
-                transform:
-                    translateY(0);
-            }
-        }
+border: 1px solid #e4e4e7;
 
-        .sheet-handle {
-            width: 42px;
-            height: 5px;
+border-radius: 14px;
 
-            margin:
-                0 auto
-                17px;
+outline: none;
 
-            border-radius: 10px;
+background: #fff;
 
-            background: #d4d4d8;
-        }
+color: #18181b;
 
-        .modal-title {
-            font-size: 23px;
+font-size: 16px;
 
-            font-weight: 850;
+touch-action: manipulation; }
 
-            margin-bottom: 18px;
-        }
+input:focus, select:focus { border-color: #6366f1;
 
+box-shadow: 0 0 0 3px rgba(99,102,241,.10); }
 
-        /* =====================================================
-           TYPE SELECTOR
-        ===================================================== */
+/* ========================================================= SAVE / CANCEL ========================================================= */
 
-        .type-selector {
-            display: grid;
+.save-button { width: 100%;
 
-            grid-template-columns:
-                1fr 1fr;
+min-height: 54px;
 
-            gap: 4px;
+margin-top: 7px;
 
-            padding: 4px;
+border-radius: 15px;
 
-            border-radius: 14px;
+background: linear-gradient( 135deg, #6366f1, #7c3aed );
 
-            background: #f4f4f5;
+color: #fff;
 
-            margin-bottom: 17px;
-        }
+font-size: 16px; font-weight: 800;
 
-        .type-button {
-            min-height: 46px;
+box-shadow: 0 8px 20px rgba(99,102,241,.23);
 
-            border: 0;
+touch-action: manipulation; }
 
-            border-radius: 11px;
+.save-button:active { transform: scale(.98); }
 
-            background: transparent;
+.cancel-button { width: 100%;
 
-            color: #71717a;
+min-height: 50px;
 
-            font-size: 14px;
+background: transparent;
 
-            font-weight: 750;
-        }
+color: #71717a;
 
-        .type-button.active-expense {
-            background: white;
+font-size: 15px; font-weight: 600;
 
-            color: #dc2626;
+touch-action: manipulation; }
 
-            box-shadow:
-                0 2px 8px
-                rgba(0,0,0,.08);
-        }
+/* ========================================================= ANIMATION LAYER ========================================================= */
 
-        .type-button.active-income {
-            background: white;
+#celebration { position: fixed;
 
-            color: #16a34a;
+inset: 0;
 
-            box-shadow:
-                0 2px 8px
-                rgba(0,0,0,.08);
-        }
+overflow: hidden;
 
+pointer-events: none;
 
-        /* =====================================================
-           FORM
-        ===================================================== */
+z-index: 999; }
 
-        .form-group {
-            margin-bottom: 14px;
-        }
+/* ========================================================= MESSAGE ========================================================= */
 
-        .form-label {
-            display: block;
+.reward-message { position: fixed;
 
-            margin-bottom: 7px;
+left: 50%; top: 38%;
 
-            color: #3f3f46;
+transform: translate(-50%,-50%) scale(.4);
 
-            font-size: 12px;
+opacity: 0;
 
-            font-weight: 700;
-        }
+padding: 14px 22px;
 
-        input,
-        select {
-            width: 100%;
+border-radius: 999px;
 
-            min-height: 50px;
+color: #fff;
 
-            padding:
-                12px
-                14px;
+font-size: 19px; font-weight: 850;
 
-            border:
-                1px solid #e4e4e7;
+white-space: nowrap;
 
-            border-radius: 14px;
+box-shadow: 0 15px 40px rgba(0,0,0,.20);
 
-            outline: none;
+animation: rewardMessage 1.4s ease-out forwards; }
 
-            background: white;
+.reward-message.income { background: linear-gradient( 135deg, #16a34a, #22c55e ); }
 
-            color: #18181b;
+.reward-message.expense { background: linear-gradient( 135deg, #dc2626, #ef4444 ); }
 
-            font-size: 16px;
+@keyframes rewardMessage { 0% { opacity: 0;
 
-            appearance: auto;
-        }
+transform: translate(-50%,-50%) scale(.4); }
 
-        input:focus,
-        select:focus {
-            border-color: #6366f1;
+20% { opacity: 1;
 
-            box-shadow:
-                0 0 0 3px
-                rgba(99,102,241,.10);
-        }
+transform: translate(-50%,-50%) scale(1.12); }
 
-        .save-button {
-            width: 100%;
+35% { transform: translate(-50%,-50%) scale(1); }
 
-            min-height: 52px;
+75% { opacity: 1; }
 
-            margin-top: 7px;
+100% { opacity: 0;
 
-            border: 0;
+transform: translate(-50%,-80%) scale(.9); } }
 
-            border-radius: 15px;
+/* ========================================================= INCOME COINS ========================================================= */
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #6366f1,
-                    #7c3aed
-                );
+.coin { position: absolute;
 
-            color: white;
+left: 50%; top: 42%;
 
-            font-size: 16px;
+font-size: 27px;
 
-            font-weight: 800;
+animation: coinBurst 1.2s cubic-bezier(.15,.8,.3,1) forwards; }
 
-            box-shadow:
-                0 8px 20px
-                rgba(99,102,241,.23);
-        }
+@keyframes coinBurst { 0% { opacity: 0;
 
-        .save-button:active {
-            transform: scale(.98);
-        }
+transform: translate(-50%,-50%) scale(.2) rotate(0); }
 
-        .cancel-button {
-            width: 100%;
+15% { opacity: 1; }
 
-            min-height: 46px;
+100% { opacity: 0;
 
-            border: 0;
+transform: translate( calc(-50% + var(--x)), calc(-50% + var(--y)) ) scale(1) rotate(var(--rotation)); } }
 
-            background: transparent;
+/* ========================================================= GLOW ========================================================= */
 
-            color: #71717a;
+.reward-glow { position: fixed;
 
-            font-size: 15px;
+left: 50%; top: 42%;
 
-            font-weight: 600;
-        }
+width: 30px; height: 30px;
 
+border-radius: 50%;
 
-        /* =====================================================
-           ANIMATION LAYER
-        ===================================================== */
+background: #22c55e;
 
-        #celebration {
-            position: fixed;
+transform: translate(-50%,-50%);
 
-            inset: 0;
+animation: glowBurst .8s ease-out forwards; }
 
-            overflow: hidden;
+@keyframes glowBurst { 0% { opacity: .8;
 
-            pointer-events: none;
+transform: translate(-50%,-50%) scale(.2); }
 
-            z-index: 999;
-        }
+100% { opacity: 0;
 
+transform: translate(-50%,-50%) scale(15); } }
 
-        /* =====================================================
-           REWARD MESSAGE
-        ===================================================== */
+/* ========================================================= EXPENSE ========================================================= */
 
-        .reward-message {
-            position: fixed;
+.loss-flash { position: fixed;
 
-            left: 50%;
-            top: 38%;
+inset: 0;
 
-            transform:
-                translate(-50%, -50%)
-                scale(.4);
+background: rgba(239,68,68,.16);
 
-            opacity: 0;
+animation: lossFlash .55s ease-out forwards; }
 
-            padding:
-                14px
-                22px;
+@keyframes lossFlash { 0% { opacity: 0; }
 
-            border-radius: 999px;
+25% { opacity: 1; }
 
-            color: white;
+100% { opacity: 0; } }
 
-            font-size: 19px;
+.shake { animation: shakeScreen .45s ease; }
 
-            font-weight: 850;
+@keyframes shakeScreen { 0%,100% { transform: translateX(0); }
 
-            white-space: nowrap;
+20% { transform: translateX(-7px); }
 
-            box-shadow:
-                0 15px 40px
-                rgba(0,0,0,.20);
+40% { transform: translateX(7px); }
 
-            animation:
-                rewardMessage
-                1.4s
-                ease-out
-                forwards;
-        }
+60% { transform: translateX(-5px); }
 
-        .reward-message.income {
-            background:
-                linear-gradient(
-                    135deg,
-                    #16a34a,
-                    #22c55e
-                );
-        }
+80% { transform: translateX(5px); } }
 
-        .reward-message.expense {
-            background:
-                linear-gradient(
-                    135deg,
-                    #dc2626,
-                    #ef4444
-                );
-        }
+.loss-coin { position: absolute;
 
-        @keyframes rewardMessage {
+left: 50%; top: 35%;
 
-            0% {
-                opacity: 0;
+font-size: 26px;
 
-                transform:
-                    translate(-50%, -50%)
-                    scale(.4);
-            }
+animation: lossCoin 1.1s ease-in forwards; }
 
-            20% {
-                opacity: 1;
+@keyframes lossCoin { 0% { opacity: 0;
 
-                transform:
-                    translate(-50%, -50%)
-                    scale(1.12);
-            }
+transform: translate(-50%,-50%) scale(1.2); }
 
-            35% {
-                transform:
-                    translate(-50%, -50%)
-                    scale(1);
-            }
+15% { opacity: 1; }
 
-            75% {
-                opacity: 1;
-            }
+100% { opacity: 0;
 
-            100% {
-                opacity: 0;
+transform: translate( calc(-50% + var(--x)), calc(-50% + 250px) ) rotate(360deg); } }
 
-                transform:
-                    translate(-50%, -80%)
-                    scale(.9);
-            }
-        }
+/* ========================================================= DARK MODE ========================================================= */
 
+@media (prefers-color-scheme: dark) {
 
-        /* =====================================================
-           INCOME COINS
-        ===================================================== */
+html, body { background: #09090b; color: #fafafa; }
 
-        .coin {
-            position: absolute;
+.header-button, .summary-card, .transaction, .modal-content { background: #18181b; }
 
-            left: 50%;
-            top: 42%;
+.summary-title, .transaction-category, .transaction-count { color: #a1a1aa; }
 
-            font-size: 27px;
+.empty-title { color: #fafafa; }
 
-            animation:
-                coinBurst
-                1.2s
-                cubic-bezier(.15,.8,.3,1)
-                forwards;
-        }
+.transaction-icon { background: #27272a; }
 
-        @keyframes coinBurst {
+input, select { background: #18181b; color: #fafafa; border-color: #3f3f46; }
 
-            0% {
-                opacity: 0;
+.form-label { color: #d4d4d8; }
 
-                transform:
-                    translate(-50%,-50%)
-                    scale(.2)
-                    rotate(0deg);
-            }
+.type-selector { background: #27272a; }
 
-            15% {
-                opacity: 1;
-            }
+.type-button.active-expense, .type-button.active-income { background: #18181b; }
 
-            100% {
-                opacity: 0;
+.cancel-button { color: #a1a1aa; } }
 
-                transform:
-                    translate(
-                        calc(-50% + var(--x)),
-                        calc(-50% + var(--y))
-                    )
-                    scale(1)
-                    rotate(var(--rotation));
-            }
-        }
+/* ========================================================= TABLET / DESKTOP ========================================================= */
 
+@media (min-width: 700px) {
 
-        /* =====================================================
-           GREEN GLOW
-        ===================================================== */
+body { padding: 20px 0; }
 
-        .reward-glow {
-            position: fixed;
+.app { min-height: calc(100vh - 40px);
 
-            left: 50%;
-            top: 42%;
+border-radius: 28px;
 
-            width: 30px;
-            height: 30px;
+background: #f5f5fa;
 
-            border-radius: 50%;
+box-shadow: 0 10px 50px rgba(0,0,0,.08); }
 
-            background: #22c55e;
+.fab { position: absolute;
 
-            transform:
-                translate(-50%,-50%);
+right: calc(50% - 280px); } }
 
-            animation:
-                glowBurst
-                .8s
-                ease-out
-                forwards;
-        }
+/* ========================================================= REDUCED MOTION ========================================================= */
 
-        @keyframes glowBurst {
+@media (prefers-reduced-motion: reduce) {
 
-            0% {
-                opacity: .8;
-
-                transform:
-                    translate(-50%,-50%)
-                    scale(.2);
-            }
-
-            100% {
-                opacity: 0;
-
-                transform:
-                    translate(-50%,-50%)
-                    scale(15);
-            }
-        }
-
-
-        /* =====================================================
-           EXPENSE FLASH
-        ===================================================== */
-
-        .loss-flash {
-            position: fixed;
-
-            inset: 0;
-
-            background:
-                rgba(239,68,68,.16);
-
-            animation:
-                lossFlash
-                .55s
-                ease-out
-                forwards;
-        }
-
-        @keyframes lossFlash {
-
-            0% {
-                opacity: 0;
-            }
-
-            25% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-
-        /* =====================================================
-           EXPENSE SHAKE
-        ===================================================== */
-
-        .shake {
-            animation:
-                shakeScreen
-                .45s
-                ease;
-        }
-
-        @keyframes shakeScreen {
-
-            0%,
-            100% {
-                transform:
-                    translateX(0);
-            }
-
-            20% {
-                transform:
-                    translateX(-7px);
-            }
-
-            40% {
-                transform:
-                    translateX(7px);
-            }
-
-            60% {
-                transform:
-                    translateX(-5px);
-            }
-
-            80% {
-                transform:
-                    translateX(5px);
-            }
-        }
-
-        @keyframes lossCoin {
-
-            0% {
-                opacity: 0;
-
-                transform:
-                    translate(-50%,-50%)
-                    scale(1.2);
-            }
-
-            15% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-
-                transform:
-                    translate(
-                        calc(-50% + var(--x)),
-                        calc(-50% + 250px)
-                    )
-                    rotate(360deg);
-            }
-        }
-
-        .loss-coin {
-            position: absolute;
-
-            left: 50%;
-            top: 35%;
-
-            font-size: 26px;
-
-            animation:
-                lossCoin
-                1.1s
-                ease-in
-                forwards;
-        }
-
-
-        /* =====================================================
-           DARK MODE
-        ===================================================== */
-
-        @media (prefers-color-scheme: dark) {
-
-            html,
-            body {
-                background: #09090b;
-                color: #fafafa;
-            }
-
-            .header-button,
-            .summary-card,
-            .transaction,
-            .modal-content {
-                background: #18181b;
-            }
-
-            .summary-title,
-            .transaction-category,
-            .transaction-count {
-                color: #a1a1aa;
-            }
-
-            .empty-title {
-                color: #fafafa;
-            }
-
-            .transaction-icon {
-                background: #27272a;
-            }
-
-            input,
-            select {
-                background: #18181b;
-                color: #fafafa;
-                border-color: #3f3f46;
-            }
-
-            .form-label {
-                color: #d4d4d8;
-            }
-
-            .type-selector {
-                background: #27272a;
-            }
-
-            .type-button.active-expense,
-            .type-button.active-income {
-                background: #18181b;
-            }
-
-            .cancel-button {
-                color: #a1a1aa;
-            }
-
-        }
-
-
-        /* =====================================================
-           TABLET / LARGE SCREEN
-        ===================================================== */
-
-        @media (min-width: 700px) {
-
-            body {
-                padding:
-                    20px 0;
-            }
-
-            .app {
-                border-radius: 28px;
-
-                min-height:
-                    calc(100vh - 40px);
-
-                background: #f5f5fa;
-
-                box-shadow:
-                    0 10px 50px
-                    rgba(0,0,0,.08);
-            }
-
-            .fab {
-                position: absolute;
-
-                right:
-                    calc(
-                        50% -
-                        280px
-                    );
-            }
-
-        }
-
-
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
-
-        @media (
-            prefers-reduced-motion: reduce
-        ) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: .01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: .01ms !important;
-            }
-
-        }
-
-    </style>
-
-</head>
-
+, ::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } } </style> </head>
 
 <body>
 
+<div id="celebration"></div>
 
-    <!-- =====================================================
-         ANIMATION LAYER
-    ====================================================== -->
+<main class="app">
 
-    <div id="celebration"></div>
+<header class="header">
 
+<div class="logo"> Spend<span>ly</span> </div>
 
-    <!-- =====================================================
-         APP
-    ====================================================== -->
+<button class="header-button" id="clearButton" aria-label="Clear all transactions" type="button"> ⚙️ </button>
 
-    <main class="app">
+</header>
 
+<section class="balance-card">
 
-        <!-- HEADER -->
+<div class="balance-content">
 
-        <header class="header">
+<div class="balance-label"> Current Balance </div>
 
-            <div class="logo">
-                Spend<span>ly</span>
-            </div>
+<div class="balance" id="balance"> ₹0 </div>
 
-            <button
-                class="header-button"
-                id="clearButton"
-                aria-label="Clear all transactions"
-            >
-                ⚙️
-            </button>
+<div class="balance-subtitle"> Your finances at a glance </div>
 
-        </header>
+</div>
 
+</section>
 
-        <!-- BALANCE -->
+<section class="summary">
 
-        <section class="balance-card">
+<div class="summary-card">
 
-            <div class="balance-content">
+<div class="summary-icon income-icon"> ↓ </div>
 
-                <div class="balance-label">
-                    Current Balance
-                </div>
+<div class="summary-title"> Income </div>
 
-                <div
-                    class="balance"
-                    id="balance"
-                >
-                    ₹0
-                </div>
+<div class="summary-amount income" id="income"> ₹0 </div>
 
-                <div class="balance-subtitle">
-                    Your finances at a glance
-                </div>
+</div>
 
-            </div>
+<div class="summary-card">
 
-        </section>
+<div class="summary-icon expense-icon"> ↑ </div>
 
+<div class="summary-title"> Expenses </div>
 
-        <!-- SUMMARY -->
+<div class="summary-amount expense" id="expenses"> ₹0 </div>
 
-        <section class="summary">
+</div>
 
+</section>
 
-            <div class="summary-card">
+<section class="section">
 
-                <div
-                    class="
-                        summary-icon
-                        income-icon
-                    "
-                >
-                    ↓
-                </div>
+<div class="section-header">
 
-                <div class="summary-title">
-                    Income
-                </div>
+<div class="section-title"> Recent Transactions </div>
 
-                <div
-                    class="
-                        summary-amount
-                        income
-                    "
-                    id="income"
-                >
-                    ₹0
-                </div>
+<div class="transaction-count" id="transactionCount"> </div>
 
-            </div>
+</div>
 
+<div id="transactions"></div>
 
-            <div class="summary-card">
+</section>
 
-                <div
-                    class="
-                        summary-icon
-                        expense-icon
-                    "
-                >
-                    ↑
-                </div>
+</main>
 
-                <div class="summary-title">
-                    Expenses
-                </div>
+<button class="fab" id="addButton" aria-label="Add transaction" type="button"> + </button>
 
-                <div
-                    class="
-                        summary-amount
-                        expense
-                    "
-                    id="expenses"
-                >
-                    ₹0
-                </div>
+<div class="modal" id="modal" aria-hidden="true">
 
-            </div>
+<div class="modal-content" id="modalContent">
 
+<div class="sheet-handle"></div>
 
-        </section>
+<div class="modal-title"> Add Transaction </div>
 
+<div class="type-selector">
 
-        <!-- TRANSACTIONS -->
+<button class="type-button active-expense" id="expenseButton" type="button"> Expense </button>
 
-        <section class="section">
+<button class="type-button" id="incomeButton" type="button"> Income </button>
 
-            <div class="section-header">
+</div>
 
-                <div class="section-title">
-                    Recent Transactions
-                </div>
+<div class="form-group">
 
-                <div
-                    class="transaction-count"
-                    id="transactionCount"
-                ></div>
+<label class="form-label" for="title"> Description </label>
 
-            </div>
+<input id="title" type="text" maxlength="60" autocomplete="off" autocapitalize="sentences" placeholder="e.g. Lunch">
 
-            <div id="transactions"></div>
+</div>
 
-        </section>
+<div class="form-group">
 
+<label class="form-label" for="amount"> Amount </label>
 
-    </main>
+<input id="amount" type="number" min="0" step="0.01" inputmode="decimal" autocomplete="off" placeholder="₹0">
 
+</div>
 
-    <!-- =====================================================
-         ADD BUTTON
-    ====================================================== -->
+<div class="form-group">
 
-    <button
-        class="fab"
-        id="addButton"
-        aria-label="Add transaction"
-    >
-        +
-    </button>
+<label class="form-label" for="category"> Category </label>
 
+<select id="category">
 
-    <!-- =====================================================
-         ADD TRANSACTION SHEET
-    ====================================================== -->
+<option value="Food">🍔 Food</option> <option value="Transport">🚗 Transport</option> <option value="Shopping">🛍️ Shopping</option> <option value="Bills">📄 Bills</option> <option value="Entertainment">🎬 Entertainment</option> <option value="Health">❤️ Health</option> <option value="Other">💰 Other</option>
 
-    <div
-        class="modal"
-        id="modal"
-        aria-hidden="true"
-    >
+</select>
 
-        <div class="modal-content">
+</div>
 
-            <div class="sheet-handle"></div>
+<button class="save-button" id="saveButton" type="button"> Save Transaction </button>
 
-            <div class="modal-title">
-                Add Transaction
-            </div>
+<button class="cancel-button" id="cancelButton" type="button"> Cancel </button>
 
+</div> </div>
 
-            <!-- TYPE -->
+<script> "use strict";
 
-            <div class="type-selector">
+/* ========================================================= STORAGE ========================================================= */
 
-                <button
-                    class="
-                        type-button
-                        active-expense
-                    "
-                    id="expenseButton"
-                >
-                    Expense
-                </button>
+const STORAGEKEY = "spendlytransactions_v2";
 
-                <button
-                    class="type-button"
-                    id="incomeButton"
-                >
-                    Income
-                </button>
+let transactions = [];
 
-            </div>
+try { const stored = localStorage.getItem(STORAGE_KEY);
 
+if (stored) { const parsed = JSON.parse(stored);
 
-            <!-- DESCRIPTION -->
+if (Array.isArray(parsed)) { transactions = parsed; } } } catch (error) { transactions = []; }
 
-            <div class="form-group">
+let currentType = "expense";
 
-                <label
-                    class="form-label"
-                    for="title"
-                >
-                    Description
-                </label>
+/* ========================================================= DOM ========================================================= */
 
-                <input
-                    id="title"
-                    type="text"
-                    maxlength="60"
-                    autocomplete="off"
-                    placeholder="e.g. Lunch"
-                >
+const modal = document.getElementById("modal"); const modalContent = document.getElementById("modalContent");
 
-            </div>
+const titleInput = document.getElementById("title"); const amountInput = document.getElementById("amount"); const categoryInput = document.getElementById("category");
 
+const expenseButton = document.getElementById("expenseButton");
 
-            <!-- AMOUNT -->
+const incomeButton = document.getElementById("incomeButton");
 
-            <div class="form-group">
+const addButton = document.getElementById("addButton");
 
-                <label
-                    class="form-label"
-                    for="amount"
-                >
-                    Amount
-                </label>
+const cancelButton = document.getElementById("cancelButton");
 
-                <input
-                    id="amount"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    inputmode="decimal"
-                    autocomplete="off"
-                    placeholder="₹0"
-                >
+const saveButton = document.getElementById("saveButton");
 
-            </div>
+/* ========================================================= MONEY ========================================================= */
 
+function formatMoney(amount) {
 
-            <!-- CATEGORY -->
+return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(amount); }
 
-            <div class="form-group">
+/* ========================================================= IOS SAFE HAPTICS ========================================================= */
 
-                <label
-                    class="form-label"
-                    for="category"
-                >
-                    Category
-                </label>
+function haptic(type = "light") {
 
-                <select id="category">
+/* iOS Safari normally does not expose navigator.vibrate. Android browsers may support it.
 
-                    <option value="Food">
-                        🍔 Food
-                    </option>
+This function therefore safely uses vibration when available and otherwise does nothing. */
 
-                    <option value="Transport">
-                        🚗 Transport
-                    </option>
+try {
 
-                    <option value="Shopping">
-                        🛍️ Shopping
-                    </option>
+if ("vibrate" in navigator) {
 
-                    <option value="Bills">
-                        📄 Bills
-                    </option>
+if (type === "success") { navigator.vibrate([20, 30, 40]); }
 
-                    <option value="Entertainment">
-                        🎬 Entertainment
-                    </option>
+else if (type === "error") { navigator.vibrate([35, 25, 35]); }
 
-                    <option value="Health">
-                        ❤️ Health
-                    </option>
+else { navigator.vibrate(12); } }
 
-                    <option value="Other">
-                        💰 Other
-                    </option>
+} catch (error) { // Optional feature. } }
 
-                </select>
+/* ========================================================= TYPE ========================================================= */
 
-            </div>
+function setType(type) {
 
+currentType = type;
 
-            <!-- SAVE -->
+expenseButton.classList.remove( "active-expense" );
 
-            <button
-                class="save-button"
-                id="saveButton"
-            >
-                Save Transaction
-            </button>
+incomeButton.classList.remove( "active-income" );
 
+if (type === "expense") {
 
-            <!-- CANCEL -->
+expenseButton.classList.add( "active-expense" );
 
-            <button
-                class="cancel-button"
-                id="cancelButton"
-            >
-                Cancel
-            </button>
+} else {
 
-        </div>
+incomeButton.classList.add( "active-income" ); } }
 
-    </div>
+/* ========================================================= OPEN MODAL ========================================================= */
 
+function openModal() {
 
-    <script>
+modal.classList.add("active");
 
+modal.setAttribute( "aria-hidden", "false" );
 
-        /* =====================================================
-           STORAGE
-        ===================================================== */
+document.body.style.overflow = "hidden";
 
-        const STORAGE_KEY =
-            "spendly_transactions";
+haptic();
 
+setTimeout(() => {
 
-        let transactions = [];
+titleInput.focus();
 
+}, 300); }
 
-        try {
+/* ========================================================= CLOSE MODAL ========================================================= */
 
-            transactions =
-                JSON.parse(
-                    localStorage.getItem(
-                        STORAGE_KEY
-                    )
-                ) || [];
+function closeModal() {
 
-        } catch {
+modal.classList.remove("active");
 
-            transactions = [];
+modal.setAttribute( "aria-hidden", "true" );
 
-        }
+document.body.style.overflow = "";
 
+titleInput.value = ""; amountInput.value = ""; categoryInput.value = "Food";
 
-        let currentType =
-            "expense";
+setType("expense"); }
 
+/* ========================================================= SAVE DATA ========================================================= */
 
-        /* =====================================================
-           DOM
-        ===================================================== */
+function saveData() {
 
-        const modal =
-            document.getElementById(
-                "modal"
-            );
+try {
 
-        const titleInput =
-            document.getElementById(
-                "title"
-            );
+localStorage.setItem( STORAGE_KEY, JSON.stringify(transactions) );
 
-        const amountInput =
-            document.getElementById(
-                "amount"
-            );
+return true;
 
-        const categoryInput =
-            document.getElementById(
-                "category"
-            );
+} catch (error) {
 
-        const expenseButton =
-            document.getElementById(
-                "expenseButton"
-            );
+console.error( "Spendly storage error:", error );
 
-        const incomeButton =
-            document.getElementById(
-                "incomeButton"
-            );
+alert( "Spendly could not save this transaction." );
 
+return false; } }
 
-        /* =====================================================
-           MONEY
-        ===================================================== */
+/* ========================================================= SAVE TRANSACTION ========================================================= */
 
-        function formatMoney(amount) {
+function saveTransaction() {
 
-            return new Intl.NumberFormat(
-                "en-IN",
-                {
-                    style: "currency",
-                    currency: "INR",
-                    maximumFractionDigits: 0
-                }
-            ).format(amount);
+const title = titleInput.value.trim();
 
-        }
+const amount = Number(amountInput.value);
 
+const category = categoryInput.value;
 
-        /* =====================================================
-           HAPTICS
-        ===================================================== */
+if (!title) {
 
-        function vibrate(pattern) {
+alert( "Please enter a description." );
 
-            try {
+titleInput.focus();
 
-                if (
-                    "vibrate"
-                    in navigator
-                ) {
+return; }
 
-                    navigator.vibrate(
-                        pattern
-                    );
+if ( !Number.isFinite(amount) || amount <= 0 ) {
 
-                }
+alert( "Please enter a valid amount." );
 
-            } catch {
+amountInput.focus();
 
-                // Haptics are optional.
-            }
+return; }
 
-        }
+const transaction = {
 
+id: Date.now().toString() + Math.random() .toString(36) .slice(2),
 
-        /* =====================================================
-           TYPE
-        ===================================================== */
+title: title,
 
-        function setType(type) {
+amount: amount,
 
-            currentType = type;
+type: currentType,
 
+category: category,
 
-            expenseButton.className =
-                "type-button" +
-                (
-                    type === "expense"
-                        ? " active-expense"
-                        : ""
-                );
+date: new Date().toISOString() };
 
+transactions.unshift(transaction);
 
-            incomeButton.className =
-                "type-button" +
-                (
-                    type === "income"
-                        ? " active-income"
-                        : ""
-                );
+if (!saveData()) { return; }
 
-        }
+const savedType = currentType;
 
+closeModal();
 
-        /* =====================================================
-           OPEN SHEET
-        ===================================================== */
+render();
 
-        function openModal() {
+if (savedType === "income") {
 
-            modal.classList.add(
-                "active"
-            );
+showIncomeReward(amount);
 
-            modal.setAttribute(
-                "aria-hidden",
-                "false"
-            );
+} else {
 
+showExpenseLoss(amount); } }
 
-            setTimeout(() => {
+/* ========================================================= DELETE ========================================================= */
 
-                titleInput.focus();
+function deleteTransaction(id) {
 
-            }, 180);
+const transaction = transactions.find( item => String(item.id) === String(id) );
 
+if (!transaction) { return; }
 
-            vibrate(15);
+transactions = transactions.filter( item => String(item.id) !== String(id) );
 
-        }
+saveData();
 
+render();
 
-        /* =====================================================
-           CLOSE SHEET
-        ===================================================== */
+haptic(); }
 
-        function closeModal() {
+/* ========================================================= CLEAR ========================================================= */
 
-            modal.classList.remove(
-                "active"
-            );
+function clearAll() {
 
-            modal.setAttribute(
-                "aria-hidden",
-                "true"
-            );
+if (transactions.length === 0) {
 
+alert( "There are no transactions to clear." );
 
-            titleInput.value =
-                "";
+return; }
 
-            amountInput.value =
-                "";
+const confirmed = confirm( "Delete all transactions?" );
 
-            categoryInput.value =
-                "Food";
+if (!confirmed) { return; }
 
+transactions = [];
 
-            setType(
-                "expense"
-            );
+saveData();
 
-        }
+render();
 
+haptic("error"); }
 
-        /* =====================================================
-           SAVE
-        ===================================================== */
+/* ========================================================= ICON ========================================================= */
 
-        function saveTransaction() {
+function getIcon(category) {
 
-            const title =
-                titleInput
-                    .value
-                    .trim();
+const icons = {
 
+Food: "🍔", Transport: "🚗", Shopping: "🛍️", Bills: "📄", Entertainment: "🎬", Health: "❤️", Other: "💰" };
 
-            const amount =
-                Number(
-                    amountInput.value
-                );
+return icons[category] || "💰"; }
 
+/* ========================================================= HTML SAFETY ========================================================= */
 
-            const category =
-                categoryInput.value;
+function escapeHTML(value) {
 
+const div = document.createElement("div");
 
-            if (!title) {
+div.textContent = String(value);
 
-                alert(
-                    "Please enter a description."
-                );
+return div.innerHTML; }
 
-                titleInput.focus();
+/* ========================================================= RENDER ========================================================= */
 
-                return;
+function render() {
 
-            }
+let income = 0; let expenses = 0;
 
+transactions.forEach(transaction => {
 
-            if (
-                !Number.isFinite(amount)
-                ||
-                amount <= 0
-            ) {
+const amount = Number(transaction.amount) || 0;
 
-                alert(
-                    "Please enter a valid amount."
-                );
+if (transaction.type === "income") {
 
-                amountInput.focus();
+income += amount;
 
-                return;
+} else {
 
-            }
+expenses += amount; } });
 
+const balance = income - expenses;
 
-            const savedType =
-                currentType;
+document.getElementById("balance") .textContent = formatMoney(balance);
 
+document.getElementById("income") .textContent = formatMoney(income);
 
-            const transaction = {
+document.getElementById("expenses") .textContent = formatMoney(expenses);
 
-                id:
-                    Date.now()
-                    +
-                    Math.random(),
+document.getElementById("transactionCount") .textContent = transactions.length ? transactions.length : "";
 
-                title,
+const container = document.getElementById( "transactions" );
 
-                amount,
+if (transactions.length === 0) {
 
-                type:
-                    savedType,
+container.innerHTML = ` <div class="empty">
 
-                category,
+<div class="empty-icon"> 💳 </div>
 
-                date:
-                    new Date()
-                        .toISOString()
+<div class="empty-title"> No transactions yet </div>
 
-            };
+<div class="empty-subtitle"> Tap + to add your first transaction. </div>
 
+</div> `;
 
-            transactions.unshift(
-                transaction
-            );
+return; }
 
+container.innerHTML = transactions.map(transaction => {
 
-            saveData();
+const isIncome = transaction.type === "income";
 
-            render();
+const sign = isIncome ? "+" : "-";
 
-            closeModal();
+const color = isIncome ? "income" : "expense";
 
+return ` <div class="transaction">
 
-            /* Animation */
+<div class="transaction-icon"> ${getIcon(transaction.category)} </div>
 
-            if (
-                savedType ===
-                "income"
-            ) {
+<div class="transaction-info">
 
-                showIncomeReward(
-                    amount
-                );
+<div class="transaction-title"> ${escapeHTML(transaction.title)} </div>
 
-            } else {
+<div class="transaction-category"> ${escapeHTML(transaction.category)} </div>
 
-                showExpenseLoss(
-                    amount
-                );
+</div>
 
-            }
+<div class="transaction-right">
 
-        }
+<div class=" transaction-amount ${color} "> 
+s
+i
+g
+n
+{formatMoney( Number(transaction.amount) )} </div>
 
+<button class="delete-button" data-delete-id="${escapeHTML(transaction.id)}" aria-label="Delete transaction" type="button"> 🗑️ </button>
 
-        /* =====================================================
-           SAVE DATA
-        ===================================================== */
+</div>
 
-        function saveData() {
+</div> `;
 
-            try {
+}).join("");
 
-                localStorage.setItem(
-                    STORAGE_KEY,
-                    JSON.stringify(
-                        transactions
-                    )
-                );
+container .querySelectorAll("[data-delete-id]") .forEach(button => {
 
-            } catch (error) {
+button.addEventListener( "click", event => {
 
-                console.error(
-                    "Storage error:",
-                    error
-                );
+event.preventDefault(); event.stopPropagation();
 
-            }
+deleteTransaction( button.dataset.deleteId ); } );
 
-        }
+}); }
 
+/* ========================================================= INCOME REWARD ========================================================= */
 
-        /* =====================================================
-           DELETE
-        ===================================================== */
+function showIncomeReward(amount) {
 
-        function deleteTransaction(
-            id
-        ) {
+const container = document.getElementById( "celebration" );
 
-            transactions =
-                transactions.filter(
-                    item =>
-                        item.id !== id
-                );
+container.innerHTML = "";
 
+const glow = document.createElement("div");
 
-            saveData();
+glow.className = "reward-glow";
 
-            render();
+container.appendChild(glow);
 
-            vibrate(20);
+const message = document.createElement("div");
 
-        }
+message.className = "reward-message income";
 
+message.textContent = 💰 +${formatMoney(amount)} Added!;
 
-        /* =====================================================
-           CLEAR ALL
-        ===================================================== */
+container.appendChild(message);
 
-        function clearAll() {
+const coins = [ "🪙", "💰", "🪙", "💵", "🪙", "✨", "💰", "🪙" ];
 
-            if (
-                transactions.length === 0
-            ) {
+coins.forEach((coin, index) => {
 
-                alert(
-                    "There are no transactions to clear."
-                );
+const element = document.createElement("div");
 
-                return;
+element.className = "coin";
 
-            }
+element.textContent = coin;
 
+const angle = (Math.PI * 2 / coins.length) * index;
 
-            const confirmed =
-                confirm(
-                    "Delete all transactions?"
-                );
+const distance = 90 + Math.random() * 110;
 
+element.style.setProperty( "--x", ${Math.cos(angle) * distance}px );
 
-            if (!confirmed) {
-                return;
-            }
+element.style.setProperty( "--y", ${Math.sin(angle) * distance}px );
 
+element.style.setProperty( "--rotation", ${Math.random() * 720 - 360}deg );
 
-            transactions = [];
+container.appendChild(element); });
 
+haptic("success");
 
-            saveData();
+setTimeout(() => {
 
-            render();
+container.innerHTML = "";
 
-            vibrate(
-                [30, 40, 30]
-            );
+}, 1600); }
 
-        }
+/* ========================================================= EXPENSE LOSS ========================================================= */
 
+function showExpenseLoss(amount) {
 
-        /* =====================================================
-           CATEGORY ICON
-        ===================================================== */
+const container = document.getElementById( "celebration" );
 
-        function getIcon(
-            category
-        ) {
+container.innerHTML = "";
 
-            const icons = {
+const flash = document.createElement("div");
 
-                Food: "🍔",
+flash.className = "loss-flash";
 
-                Transport: "🚗",
+container.appendChild(flash);
 
-                Shopping: "🛍️",
+const message = document.createElement("div");
 
-                Bills: "📄",
+message.className = "reward-message expense";
 
-                Entertainment: "🎬",
+message.textContent = 💸 -${formatMoney(amount)};
 
-                Health: "❤️",
+container.appendChild(message);
 
-                Other: "💰"
+const coins = [ "💸", "🪙", "💸", "🪙", "💸" ];
 
-            };
+coins.forEach((coin, index) => {
 
+const element = document.createElement("div");
 
-            return (
-                icons[category]
-                ||
-                "💰"
-            );
+element.className = "loss-coin";
 
-        }
+element.textContent = coin;
 
+element.style.setProperty( "--x", ${(index - 2) * 70}px );
 
-        /* =====================================================
-           HTML SAFETY
-        ===================================================== */
+container.appendChild(element); });
 
-        function escapeHTML(
-            text
-        ) {
+const app = document.querySelector(".app");
 
-            const div =
-                document.createElement(
-                    "div"
-                );
+app.classList.remove("shake");
 
+void app.offsetWidth;
 
-            div.textContent =
-                text;
+app.classList.add("shake");
 
+setTimeout(() => {
 
-            return div.innerHTML;
+app.classList.remove("shake");
 
-        }
+}, 500);
 
+haptic("error");
 
-        /* =====================================================
-           RENDER
-        ===================================================== */
+setTimeout(() => {
 
-        function render() {
+container.innerHTML = "";
 
-            let income = 0;
+}, 1500); }
 
-            let expenses = 0;
+/* ========================================================= EVENTS ========================================================= */
 
+addButton.addEventListener( "click", openModal );
 
-            transactions.forEach(
-                transaction => {
+cancelButton.addEventListener( "click", closeModal );
 
-                    if (
-                        transaction.type
-                        === "income"
-                    ) {
+saveButton.addEventListener( "click", saveTransaction );
 
-                        income +=
-                            Number(
-                                transaction.amount
-                            );
+document .getElementById("clearButton") .addEventListener( "click", clearAll );
 
-                    } else {
+expenseButton.addEventListener( "click", () => setType("expense") );
 
-                        expenses +=
-                            Number(
-                                transaction.amount
-                            );
+incomeButton.addEventListener( "click", () => setType("income") );
 
-                    }
+/* ========================================================= BACKDROP ========================================================= */
 
-                }
-            );
+modal.addEventListener( "click", event => {
 
+if (event.target === modal) { closeModal(); }
 
-            const balance =
-                income - expenses;
+} );
 
+/* ========================================================= ESCAPE ========================================================= */
 
-            document
-                .getElementById(
-                    "balance"
-                )
-                .textContent =
-                    formatMoney(
-                        balance
-                    );
+document.addEventListener( "keydown", event => {
 
+if (event.key === "Escape") { closeModal(); }
 
-            document
-                .getElementById(
-                    "income"
-                )
-                .textContent =
-                    formatMoney(
-                        income
-                    );
+} );
 
+/* ========================================================= ENTER ========================================================= */
 
-            document
-                .getElementById(
-                    "expenses"
-                )
-                .textContent =
-                    formatMoney(
-                        expenses
-                    );
+titleInput.addEventListener( "keydown", event => {
 
+if (event.key === "Enter") {
 
-            document
-                .getElementById(
-                    "transactionCount"
-                )
-                .textContent =
-                    transactions.length
-                        ? `${transactions.length}`
-                        : "";
+event.preventDefault();
 
+amountInput.focus(); }
 
-            const container =
-                document
-                    .getElementById(
-                        "transactions"
-                    );
+} );
 
+amountInput.addEventListener( "keydown", event => {
 
-            if (
-                transactions.length
-                === 0
-            ) {
+if (event.key === "Enter") {
 
-                container.innerHTML = `
+event.preventDefault();
 
-                    <div class="empty">
+saveTransaction(); }
 
-                        <div class="empty-icon">
-                            💳
-                        </div>
+} );
 
-                        <div class="empty-title">
-                            No transactions yet
-                        </div>
+/* ========================================================= IOS KEYBOARD FIX ========================================================= */
 
-                        <div class="empty-subtitle">
-                            Tap + to add your
-                            first transaction.
-                        </div>
+if (window.visualViewport) {
 
-                    </div>
+window.visualViewport.addEventListener( "resize", () => {
 
-                `;
+if ( modal.classList.contains("active") ) {
 
-                return;
+setTimeout(() => {
 
-            }
+const active = document.activeElement;
 
+if ( active === titleInput || active === amountInput ) {
 
-            container.innerHTML =
-                transactions
-                    .map(
-                        transaction => {
+active.scrollIntoView({ behavior: "smooth", block: "center" }); }
 
-                            const isIncome =
-                                transaction.type
-                                === "income";
+}, 50); }
 
+} ); }
 
-                            const sign =
-                                isIncome
-                                    ? "+"
-                                    : "-";
+/* ========================================================= INITIALIZE ========================================================= */
 
+render(); </script>
 
-                            const color =
-                                isIncome
-                                    ? "income"
-                                    : "expense";
-
-
-                            return `
-
-                                <div
-                                    class="transaction"
-                                >
-
-                                    <div
-                                        class="
-                                            transaction-icon
-                                        "
-                                    >
-                                        ${getIcon(
-                                            transaction.category
-                                        )}
-                                    </div>
-
-
-                                    <div
-                                        class="
-                                            transaction-info
-                                        "
-                                    >
-
-                                        <div
-                                            class="
-                                                transaction-title
-                                            "
-                                        >
-                                            ${escapeHTML(
-                                                transaction.title
-                                            )}
-                                        </div>
-
-
-                                        <div
-                                            class="
-                                                transaction-category
-                                            "
-                                        >
-                                            ${escapeHTML(
-                                                transaction.category
-                                            )}
-                                        </div>
-
-                                    </div>
-
-
-                                    <div
-                                        class="
-                                            transaction-right
-                                        "
-                                    >
-
-                                        <div
-                                            class="
-                                                transaction-amount
-                                                ${color}
-                                            "
-                                        >
-                                            ${sign}${formatMoney(
-                                                Number(
-                                                    transaction.amount
-                                                )
-                                            )}
-                                        </div>
-
-
-                                        <button
-                                            class="
-                                                delete-button
-                                            "
-                                            data-delete-id="
-                                                ${transaction.id}
-                                            "
-                                            aria-label="
-                                                Delete transaction
-                                            "
-                                        >
-                                            🗑️
-                                        </button>
-
-                                    </div>
-
-                                </div>
-
-                            `;
-
-                        }
-                    )
-                    .join("");
-
-
-            /* Delete buttons */
-
-            container
-                .querySelectorAll(
-                    "[data-delete-id]"
-                )
-                .forEach(
-                    button => {
-
-                        button.addEventListener(
-                            "click",
-                            () => {
-
-                                deleteTransaction(
-                                    Number(
-                                        button
-                                            .dataset
-                                            .deleteId
-                                    )
-                                );
-
-                            }
-                        );
-
-                    }
-                );
-
-        }
-
-
-        /* =====================================================
-           💰 INCOME REWARD
-        ===================================================== */
-
-        function showIncomeReward(
-            amount
-        ) {
-
-            const container =
-                document.getElementById(
-                    "celebration"
-                );
-
-
-            container.innerHTML =
-                "";
-
-
-            /* Green glow */
-
-            const glow =
-                document.createElement(
-                    "div"
-                );
-
-
-            glow.className =
-                "reward-glow";
-
-
-            container.appendChild(
-                glow
-            );
-
-
-            /* Message */
-
-            const message =
-                document.createElement(
-                    "div"
-                );
-
-
-            message.className =
-                "reward-message income";
-
-
-            message.textContent =
-                `💰 +${formatMoney(
-                    amount
-                )} Added!`;
-
-
-            container.appendChild(
-                message
-            );
-
-
-            /* Coins */
-
-            const coins = [
-
-                "🪙",
-                "💰",
-                "🪙",
-                "💵",
-                "🪙",
-                "✨",
-                "💰",
-                "🪙"
-
-            ];
-
-
-            coins.forEach(
-                (coin, index) => {
-
-                    const element =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    element.className =
-                        "coin";
-
-
-                    element.textContent =
-                        coin;
-
-
-                    const angle =
-                        (
-                            Math.PI * 2
-                            / coins.length
-                        )
-                        * index;
-
-
-                    const distance =
-                        90
-                        +
-                        Math.random()
-                        * 110;
-
-
-                    element.style.setProperty(
-                        "--x",
-                        `${
-                            Math.cos(angle)
-                            * distance
-                        }px`
-                    );
-
-
-                    element.style.setProperty(
-                        "--y",
-                        `${
-                            Math.sin(angle)
-                            * distance
-                        }px`
-                    );
-
-
-                    element.style.setProperty(
-                        "--rotation",
-                        `${
-                            Math.random()
-                            * 720
-                            - 360
-                        }deg`
-                    );
-
-
-                    container.appendChild(
-                        element
-                    );
-
-                }
-            );
-
-
-            vibrate(
-                [
-                    25,
-                    35,
-                    50
-                ]
-            );
-
-
-            setTimeout(
-                () => {
-
-                    container.innerHTML =
-                        "";
-
-                },
-                1600
-            );
-
-        }
-
-
-        /* =====================================================
-           💸 EXPENSE LOSS
-        ===================================================== */
-
-        function showExpenseLoss(
-            amount
-        ) {
-
-            const container =
-                document.getElementById(
-                    "celebration"
-                );
-
-
-            container.innerHTML =
-                "";
-
-
-            /* Red flash */
-
-            const flash =
-                document.createElement(
-                    "div"
-                );
-
-
-            flash.className =
-                "loss-flash";
-
-
-            container.appendChild(
-                flash
-            );
-
-
-            /* Message */
-
-            const message =
-                document.createElement(
-                    "div"
-                );
-
-
-            message.className =
-                "reward-message expense";
-
-
-            message.textContent =
-                `💸 -${formatMoney(
-                    amount
-                )}`;
-
-
-            container.appendChild(
-                message
-            );
-
-
-            /* Falling money */
-
-            const coins = [
-
-                "💸",
-                "🪙",
-                "💸",
-                "🪙",
-                "💸"
-
-            ];
-
-
-            coins.forEach(
-                (coin, index) => {
-
-                    const element =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    element.className =
-                        "loss-coin";
-
-
-                    element.textContent =
-                        coin;
-
-
-                    element.style.setProperty(
-                        "--x",
-                        `${
-                            (index - 2)
-                            * 70
-                        }px`
-                    );
-
-
-                    container.appendChild(
-                        element
-                    );
-
-                }
-            );
-
-
-            /* Shake */
-
-            const app =
-                document.querySelector(
-                    ".app"
-                );
-
-
-            app.classList.add(
-                "shake"
-            );
-
-
-            setTimeout(
-                () => {
-
-                    app.classList.remove(
-                        "shake"
-                    );
-
-                },
-                500
-            );
-
-
-            vibrate(
-                [
-                    35,
-                    25,
-                    35
-                ]
-            );
-
-
-            setTimeout(
-                () => {
-
-                    container.innerHTML =
-                        "";
-
-                },
-                1500
-            );
-
-        }
-
-
-        /* =====================================================
-           BUTTON EVENTS
-        ===================================================== */
-
-        document
-            .getElementById(
-                "addButton"
-            )
-            .addEventListener(
-                "click",
-                openModal
-            );
-
-
-        document
-            .getElementById(
-                "cancelButton"
-            )
-            .addEventListener(
-                "click",
-                closeModal
-            );
-
-
-        document
-            .getElementById(
-                "saveButton"
-            )
-            .addEventListener(
-                "click",
-                saveTransaction
-            );
-
-
-        document
-            .getElementById(
-                "clearButton"
-            )
-            .addEventListener(
-                "click",
-                clearAll
-            );
-
-
-        expenseButton
-            .addEventListener(
-                "click",
-                () =>
-                    setType(
-                        "expense"
-                    )
-            );
-
-
-        incomeButton
-            .addEventListener(
-                "click",
-                () =>
-                    setType(
-                        "income"
-                    )
-            );
-
-
-        /* =====================================================
-           CLOSE MODAL BY BACKDROP
-        ===================================================== */
-
-        modal.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target
-                    === modal
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           ESC KEY
-        ===================================================== */
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key
-                    === "Escape"
-                ) {
-
-                    closeModal();
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           ENTER KEY
-        ===================================================== */
-
-        [titleInput, amountInput]
-            .forEach(
-                input => {
-
-                    input.addEventListener(
-                        "keydown",
-                        event => {
-
-                            if (
-                                event.key
-                                === "Enter"
-                            ) {
-
-                                saveTransaction();
-
-                            }
-
-                        }
-                    );
-
-                }
-            );
-
-
-        /* =====================================================
-           INITIALIZE
-        ===================================================== */
-
-        render();
-
-    </script>
-
-</body>
-
-</html>
+</body> </html> :::
